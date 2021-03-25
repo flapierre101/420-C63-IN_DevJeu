@@ -9,8 +9,10 @@ public class LevelManager : MonoBehaviour
         Invalid = -1,
 
         // Define value by hand
-        PlateformerC63Level1 = 0,
-        PlateformerC63Level2 = 100
+        MainMenu = 0,
+        WorldMap = 100,
+        Dungeon = 200
+
 
 
         // Or add new at the end and never delete
@@ -47,10 +49,10 @@ public class LevelManager : MonoBehaviour
         {
             CurrentLevel = level;
 
-            GameManager.Instance.Mario.gameObject.SetActive(false);
+            GameManager.Instance.Player.gameObject.SetActive(false);
             SceneManager.LoadScene(level.ToString());
         }
-        
+
     }
 
     public void OnLevelStart()
@@ -59,17 +61,17 @@ public class LevelManager : MonoBehaviour
         LevelExits = FindObjectsOfType<LevelExit>();
         DebugCheckForErrors();
 
-        GameManager.Instance.Camera.GetComponent<FollowObject>().TargetTransform = GameManager.Instance.Mario.transform;
-        GameManager.Instance.Mario.gameObject.SetActive(true);
+        GameManager.Instance.Camera.GetComponent<FollowObject>().TargetTransform = GameManager.Instance.Player.transform;
+        GameManager.Instance.Player.gameObject.SetActive(true);
 
         OnLevelStartCommon();
     }
 
     private void OnLevelStartCommon()
     {
-        LevelEntrance = FindLevelEntrance();   
-        
-        GameManager.Instance.Mario.OnLevelStart(LevelEntrance);
+        LevelEntrance = FindLevelEntrance();
+
+        // TODO GameManager.Instance.Player.OnLevelStart(LevelEntrance);
     }
 
     private LevelEntrance FindLevelEntrance()

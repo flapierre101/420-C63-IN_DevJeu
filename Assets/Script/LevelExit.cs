@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelExit : MonoBehaviour
 {
@@ -9,10 +7,11 @@ public class LevelExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var mario = collision.GetComponent<Mario>();
-        if (mario)
+        var Player = collision.GetComponent<Player>();
+        if (Player)
         {
             GameManager.Instance.LevelManager.GoToLevel(Level, LevelEntranceId);
+
         }
     }
 }

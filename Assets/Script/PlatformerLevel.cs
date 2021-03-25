@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformerLevel : MonoBehaviour
 {
-    public SoundManager.PlatformerMusic Music = SoundManager.PlatformerMusic.Music;
+    public SoundManager.Music Music = SoundManager.Music.Music;
 
     private void Awake()
     {

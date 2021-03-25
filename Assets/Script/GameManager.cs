@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
             // TODO: use a bootloader instead to create this before level is started since it can be expensive to load all assets
             if (_instance == null)
             {
-                var gameManagerGameObject = Resources.Load<GameObject>("platformer/prefabs/GameManager");
+                var gameManagerGameObject = Resources.Load<GameObject>("/prefabs/GameManager");
                 var managerObject = Instantiate(gameManagerGameObject);
                 _instance = managerObject.GetComponent<GameManager>();
                 _instance.Initialize();
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public LevelManager LevelManager { get; private set; }
 
     public Player Player { get; private set; }
-    public Mario Mario { get; private set; }
     public Level Level { get; private set; }
     public Camera Camera { get; private set; }
     public Plane[] FrustumPlanes { get; private set; }
@@ -63,15 +62,15 @@ public class GameManager : MonoBehaviour
         //Camera.cullingMask &= ~(1 << LayerMask.NameToLayer("EnemyHitbox"));
 
         // Dynamically create Mario in the scene
-        if (!Mario)
+        if (!Player)
         {
-            Mario = FindObjectOfType<Mario>();
+            Player = FindObjectOfType<Player>();
 
-            if (!Mario)
+            if (!Player)
             {
-                var marioGameObject = PrefabManager.Spawn(PrefabManager.PlatformerGlobal.Mario, Vector3.zero);
-                Mario = marioGameObject.GetComponent<Mario>();
-                DontDestroyOnLoad(Mario);
+                var playerGameObject = PrefabManager.Spawn(PrefabManager.Global.Player, Vector3.zero);
+                Player = playerGameObject.GetComponent<Player>();
+                DontDestroyOnLoad(Player);
             }
         }
 
@@ -91,7 +90,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Mario.OnLevelRestart();
+        // TODO Player.OnLevelRestart();
     }
 
     public bool IsInsideCamera(Renderer renderer)
