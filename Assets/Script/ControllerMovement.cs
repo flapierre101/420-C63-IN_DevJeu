@@ -5,7 +5,6 @@ using UnityEngine;
 public class ControllerMovement : MonoBehaviour
 {
     public float Speed;
-
     private int _secret;
 
     public int MyProperty { get; set; }
@@ -18,6 +17,7 @@ public class ControllerMovement : MonoBehaviour
         var vertical = Input.GetAxisRaw("Vertical");
 
         var direction = new Vector3(horizontal, vertical, 0);
+
 
         if (direction.magnitude > 1)
             direction = direction.normalized;

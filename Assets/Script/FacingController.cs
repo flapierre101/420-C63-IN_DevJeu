@@ -17,9 +17,9 @@ public class FacingController : MonoBehaviour
 
                 var scale = transform.localScale;
                 if (_facing == Facing.Left)
-                    scale.x = Mathf.Abs(scale.x);
-                else
                     scale.x = Mathf.Abs(scale.x) * -1;
+                else
+                    scale.x = Mathf.Abs(scale.x);
 
                 transform.localScale = scale;
             }

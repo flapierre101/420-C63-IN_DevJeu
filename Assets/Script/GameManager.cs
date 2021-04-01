@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F10))
         {
-            PlatformController.ShowDebug = !PlatformController.ShowDebug;
+            //PlatformController.ShowDebug = !PlatformController.ShowDebug;
         }
     }
 
