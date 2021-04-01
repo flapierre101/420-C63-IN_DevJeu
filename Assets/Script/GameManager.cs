@@ -81,10 +81,7 @@ public class GameManager : MonoBehaviour
     {
         FrustumPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
-        if (Input.GetKeyDown(KeyCode.F10))
-        {
-            PlatformController.ShowDebug = !PlatformController.ShowDebug;
-        }
+
     }
 
     public void RestartLevel()
