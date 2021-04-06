@@ -7,6 +7,7 @@ public class SaveData
     public bool hasSword = false;
     public bool hasBoomerang = false;
     public bool hasSomeUpgrade = true;
+    public int spokeoldman = 0;
 
 
 

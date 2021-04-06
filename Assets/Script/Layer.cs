@@ -5,9 +5,14 @@
     IgnoreRayCast = 2,
     Water = 4,
     UI = 5,
-    Player = 8,
-    Enemy = 9,
-    EnemyHitbox = 10,
+    Obstacle = 8,
+    Culling = 9,
+    Hitbox = 10,
     Floor = 11,
-    PlayerInteract = 12
+    PlayerInteract = 11,
+    Player = 12,
+    Enemy = 13,
+    EnemyHitBox = 14,
+    NPC = 15,
+    NPCHitBox = 16
 }

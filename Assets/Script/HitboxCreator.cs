@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class HitboxCreator : MonoBehaviour
 {
-    public Layer Layer = Layer.EnemyHitbox;
+    public Layer Layer = Layer.Hitbox;
 
     public BoxCollider2D Collider2D { get; private set; }
 

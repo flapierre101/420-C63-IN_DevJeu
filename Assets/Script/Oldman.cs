@@ -1,21 +1,44 @@
 ﻿using UnityEngine;
 
-public class Oldman : MonoBehaviour
+public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    private GameManager instance;
 
-    // Update is called once per frame
+
+
     void Update()
     {
 
     }
 
-    void Interact()
-    {
 
+    public void Awake()
+    {
+        instance = GameManager.Instance;
+    }
+
+    public void Interact()
+    {
+        if (instance.SavegameManager.saveData.spokeoldman == 0)
+        {
+            // dire son premier texte
+            instance.SavegameManager.saveData.spokeoldman++;
+        }
+        else if (instance.SavegameManager.saveData.spokeoldman == 1)
+        {
+            // dire 2e phrase
+            instance.SavegameManager.saveData.spokeoldman++;
+        }
+        else
+        {
+            // dire la dernière phrase à répétition.
+        }
+
+    }
+
+    public void UpdateBehaviour()
+    {
+        throw new System.NotImplementedException();
     }
 }
