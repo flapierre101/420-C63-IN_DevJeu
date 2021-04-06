@@ -17,11 +17,11 @@ TagManager:
   - Culling
   - HitBox
   - PlayerInteract
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - EnemyHitBox
+  - NPC
+  - NPCHitBox
   - 
   - 
   - 
