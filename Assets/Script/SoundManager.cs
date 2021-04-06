@@ -28,10 +28,10 @@ public class SoundManager : MonoBehaviour
     {
         // https://docs.unity3d.com/ScriptReference/Resources.html
 
-        MusicAudioClips = Resources.LoadAll<AudioClip>("platformer/audio/music");
+        MusicAudioClips = Resources.LoadAll<AudioClip>("audio/music");
         Debug.Assert((int)Music.Count == MusicAudioClips.Length, "SoundManager : Music enum length (" + (int)Music.Count + ") does not match Resources folder (" + MusicAudioClips.Length + ")");
 
-        SfxAudioClips = Resources.LoadAll<AudioClip>("Platformer/audio/sfx");
+        SfxAudioClips = Resources.LoadAll<AudioClip>("audio/sfx");
         Debug.Assert((int)Sfx.Count == SfxAudioClips.Length, "SoundManager : Sfx enum length " + (int)Sfx.Count + ") does not match Resources folder (" + SfxAudioClips.Length + ")");
 
 
