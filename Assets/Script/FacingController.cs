@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class FacingController : MonoBehaviour
 {
+    private const string FacingX = "FacingX";
+    private const string FacingY = "FacingY";
     public Facing InitialFacing = Facing.Left;
-
+    private Animator animator;
     private Facing _facing = Facing.Invalid;
+
     public Facing Facing
     {
         get { return _facing; }
@@ -15,32 +18,49 @@ public class FacingController : MonoBehaviour
             {
                 _facing = value;
 
-                var scale = transform.localScale;
                 if (_facing == Facing.Left)
-                    scale.x = Mathf.Abs(scale.x);
-                else
-                    scale.x = Mathf.Abs(scale.x) * -1;
-
-                transform.localScale = scale;
+                    animator.SetFloat(FacingX, -1.0f);
+                else if (_facing == Facing.Right)
+                    animator.SetFloat(FacingX, 1.0f);
+                else if (_facing == Facing.Up)
+                    animator.SetFloat(FacingY, 1.0f);
+                else if (_facing == Facing.Down)
+                    animator.SetFloat(FacingY, -1.0f);
             }
         }
     }
 
-    public float Direction
+    public Vector2 Direction
     {
-        get { return Facing == Facing.Left ? -1 : 1; }
+        get
+        {
+            switch (Facing)
+            {
+                case Facing.Right:
+                    return Vector2.right;
+                case Facing.Left:
+                    return Vector2.left;
+                case Facing.Up:
+                    return Vector2.up;
+                case Facing.Down:
+                    return Vector2.down;
+                default:
+                    return Vector2.zero;
+            }
+        }
     }
 
-    public void Flip()
-    {
-        if (Facing == Facing.Left)
-            Facing = Facing.Right;
-        else if (Facing == Facing.Right)
-            Facing = Facing.Left;
-    }
+    //public void Flip()
+    //{
+    //    if (Facing == Facing.Left)
+    //        Facing = Facing.Right;
+    //    else if (Facing == Facing.Right)
+    //        Facing = Facing.Left;
+    //}
 
     private void Awake()
     {
         Facing = InitialFacing;
+        animator = GetComponent<Animator>();
     }
 }

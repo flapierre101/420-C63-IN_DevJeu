@@ -4,4 +4,6 @@
 
     Right,
     Left,
+    Up,
+    Down,
 }
