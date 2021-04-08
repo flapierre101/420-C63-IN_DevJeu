@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f667ad7a5abbc64f8937d3ca2e2b972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FacingController: {fileID: 0}
-  Animator: {fileID: 0}
+  FacingController: {fileID: 1083148959772621790}
+  Animator: {fileID: 613242965}
 --- !u!114 &1083148959772621789
 MonoBehaviour:
   m_ObjectHideFlags: 0

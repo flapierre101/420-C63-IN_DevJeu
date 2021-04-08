@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     public enum Animation
     {
-        Idle_Down,
+        Idle,
         Walk,
         Attack,
     }
@@ -60,10 +60,10 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x != 0.0f || gameObject.GetComponent<Rigidbody2D>().velocity.y != 0.0f)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        if (horizontal != 0.0f || vertical != 0.0f)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
             Animator.SetFloat("FacingX", horizontal);
             Animator.SetFloat("FacingY", vertical);
             CurrentAnimation = Animation.Walk;
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            CurrentAnimation = Animation.Idle_Down;
+            CurrentAnimation = Animation.Idle;
         }
     }
 }
