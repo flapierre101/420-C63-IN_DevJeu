@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     {
         Idle,
         Walk,
-        Attack,
+        Attack_BT,
     }
 
     public Health Health { get; private set; }
@@ -60,18 +60,30 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        if (horizontal != 0.0f || vertical != 0.0f)
+        if (Input.GetMouseButtonDown(0))
         {
-            Animator.SetFloat("FacingX", horizontal);
-            Animator.SetFloat("FacingY", vertical);
-            CurrentAnimation = Animation.Walk;
+            CurrentAnimation = Animation.Attack_BT;
 
         }
-        else
-        {
+        // si animation terminee reset currentanimation
+        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
             CurrentAnimation = Animation.Idle;
+
+        if (CurrentAnimation != Animation.Attack_BT)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            if (horizontal != 0.0f || vertical != 0.0f)
+            {
+                Animator.SetFloat("FacingX", horizontal);
+                Animator.SetFloat("FacingY", vertical);
+                CurrentAnimation = Animation.Walk;
+            }
+            else
+            {
+                CurrentAnimation = Animation.Idle;
+            }
         }
+
     }
 }
