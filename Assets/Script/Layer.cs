@@ -7,12 +7,11 @@
     UI = 5,
     Obstacle = 8,
     Culling = 9,
-    Hitbox = 10,
-    Floor = 11,
-    PlayerInteract = 11,
-    Player = 12,
+    HitBox = 10,
+    Player = 11,
+    PlayerInteract = 12,
     Enemy = 13,
     EnemyHitBox = 14,
     NPC = 15,
-    NPCHitBox = 16
+    NPCHitbox = 16
 }

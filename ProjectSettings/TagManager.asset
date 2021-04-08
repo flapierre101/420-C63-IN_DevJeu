@@ -9,39 +9,36 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
+  - 
+  - 
   - Obstacle
   - Culling
-  - HitBox
-  - PlayerInteract
+  - Hitbox
   - Player
+  - PlayerInteract
   - Enemy
   - EnemyHitBox
   - NPC
-  - NPCHitBox
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - NPCHitbox
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Obstacle
-    uniqueID: 4210378501
     locked: 0
