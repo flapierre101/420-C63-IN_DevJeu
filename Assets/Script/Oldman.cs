@@ -7,6 +7,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 
 
 
+
     void Update()
     {
 
@@ -40,5 +41,13 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
     public void UpdateBehaviour()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void OnMouseOver()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            // pass
+        }
     }
 }
