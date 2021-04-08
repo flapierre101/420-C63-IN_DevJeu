@@ -4,7 +4,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 {
 
     private GameManager instance;
-
+    private DialogueTrigger dialogueTrigger;
 
 
 
@@ -17,6 +17,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
     public void Awake()
     {
         instance = GameManager.Instance;
+
     }
 
     public void Interact()
@@ -47,7 +48,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            // pass
+            FindObjectOfType<DialogueTrigger>().TriggerDialogue();
         }
     }
 }
