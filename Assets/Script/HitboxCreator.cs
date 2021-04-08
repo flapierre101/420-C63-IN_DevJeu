@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class HitboxCreator : MonoBehaviour
 {
-    public Layer Layer = Layer.EnemyHitbox;
+    public Layer Layer = Layer.EnemyHitBox;
 
     public BoxCollider2D Collider2D { get; private set; }
 
