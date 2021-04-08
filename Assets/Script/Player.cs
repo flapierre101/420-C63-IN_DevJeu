@@ -11,9 +11,10 @@ public class Player : MonoBehaviour
     }
 
     public Health Health { get; private set; }
-    public FacingController FacingController;
-    public Animator Animator;
+    private FacingController FacingController;
+    private Animator Animator;
     private Animation _currentAnimation;
+    private Flash Flash;
 
     public Animation CurrentAnimation
     {
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
         Health.OnDeath += OnDeath;
         FacingController = GetComponent<FacingController>();
         Animator = GetComponent<Animator>();
+        Flash = GetComponent<Flash>();
     }
 
     private void OnDeath(Health health)
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
 
     private void OnHit(Health health)
     {
-        throw new NotImplementedException();
+        Flash.StartFlash();
     }
 
     void Update()
