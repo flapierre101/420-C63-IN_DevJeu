@@ -2,12 +2,12 @@
 
 public class Player : MonoBehaviour
 {
-  public enum Animation
-  {
-    Idle,
-    Walk,
-    Attack_BT,
-  }
+    public enum Animation
+    {
+        Idle,
+        Walk,
+        Attack_BT,
+    }
 
     public Health Health { get; private set; }
     private FacingController FacingController;
@@ -19,28 +19,28 @@ public class Player : MonoBehaviour
     private INPCBehaviour npc;
     private bool npcNear = false;
 
-  public Animation CurrentAnimation
-  {
-    get { return _currentAnimation; }
-    set
+    public Animation CurrentAnimation
     {
-      _currentAnimation = value;
-      UpdateAnimations();
+        get { return _currentAnimation; }
+        set
+        {
+            _currentAnimation = value;
+            UpdateAnimations();
+        }
     }
-  }
-  public string AnimationName
-  {
-    get
+    public string AnimationName
     {
-      var suffix = CurrentAnimation.ToString();
-      return suffix;
+        get
+        {
+            var suffix = CurrentAnimation.ToString();
+            return suffix;
+        }
     }
-  }
-  private void UpdateAnimations()
-  {
-    var animation = AnimationName;
-    Animator.Play(animation);
-  }
+    private void UpdateAnimations()
+    {
+        var animation = AnimationName;
+        Animator.Play(animation);
+    }
 
     void Awake()
     {
@@ -54,45 +54,56 @@ public class Player : MonoBehaviour
     }
 
 
-  private void OnDeath(Health health)
-  {
-    gameObject.SetActive(false);
-  }
-
-  private void OnHit(Health health)
-  {
-    Flash.StartFlash();
-  }
-
-  void Update()
-  {
-
-    if (Input.GetMouseButtonDown(0))
+    private void OnDeath(Health health)
     {
-      CurrentAnimation = Animation.Attack_BT;
-
-    }
-    // si animation terminee reset currentanimation
-    if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-      CurrentAnimation = Animation.Idle;
-
-    if (CurrentAnimation != Animation.Attack_BT)
-    {
-      float horizontal = Input.GetAxisRaw("Horizontal");
-      float vertical = Input.GetAxisRaw("Vertical");
-      if (horizontal != 0.0f || vertical != 0.0f)
-      {
-        Animator.SetFloat("FacingX", horizontal);
-        Animator.SetFloat("FacingY", vertical);
-        CurrentAnimation = Animation.Walk;
-      }
-      else
-      {
-        CurrentAnimation = Animation.Idle;
-      }
+        gameObject.SetActive(false);
     }
 
-  }
+    private void OnHit(Health health)
+    {
+        Flash.StartFlash();
+    }
+
+    void Update()
+    {
+
+        if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
+        {
+            CurrentAnimation = Animation.Attack_BT;
+
+        }
+        // si animation terminee reset currentanimation
+        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            CurrentAnimation = Animation.Idle;
+
+        if (CurrentAnimation != Animation.Attack_BT)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            if (horizontal != 0.0f || vertical != 0.0f)
+            {
+                Animator.SetFloat("FacingX", horizontal);
+                Animator.SetFloat("FacingY", vertical);
+                CurrentAnimation = Animation.Walk;
+            }
+            else
+            {
+                CurrentAnimation = Animation.Idle;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (npc != null)
+            {
+                npc.UpdateBehaviour();
+
+            }
+
+        }
+
+
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -129,6 +140,6 @@ public class Player : MonoBehaviour
 
 
 
-    
-  
+
+
 }
