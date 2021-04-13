@@ -395,7 +395,7 @@ Transform:
   - {fileID: 1174325772}
   - {fileID: 357588087}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161841913
 GameObject:
@@ -406,7 +406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161841914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161841913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29232034, y: -0.01538148, z: -3.1376953}
+  m_LocalPosition: {x: -0.29232034, y: -0.01538148, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3719298953852784199}
@@ -478,7 +478,7 @@ Transform:
   - {fileID: 2040741436}
   - {fileID: 446040190}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &202837952
 PrefabInstance:
@@ -1109,7 +1109,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -84588795
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.17254901, g: 0.53548825, b: 0.59607846, a: 0.59607846}
@@ -1313,7 +1313,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -84588795
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 792f0d80a6d5b904d93e233376709a37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1338,7 +1338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &446040189
 GameObject:
@@ -1351,6 +1351,7 @@ GameObject:
   - component: {fileID: 446040190}
   - component: {fileID: 446040192}
   - component: {fileID: 446040191}
+  - component: {fileID: 446040193}
   m_Layer: 8
   m_Name: Ledge (14)
   m_TagString: Ledge
@@ -1410,7 +1411,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -1448,6 +1449,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &446040193
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446040189}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &474323517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1827,7 +1849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609936428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0.18, z: 0}
+  m_LocalPosition: {x: -0.03, y: 0.18, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 145689716}
@@ -2163,6 +2185,7 @@ GameObject:
   - component: {fileID: 827377977}
   - component: {fileID: 827377979}
   - component: {fileID: 827377978}
+  - component: {fileID: 827377980}
   m_Layer: 8
   m_Name: Ledge (2)
   m_TagString: Ledge
@@ -2222,7 +2245,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -2260,6 +2283,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &827377980
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827377976}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &912189578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2356,6 +2400,7 @@ GameObject:
   - component: {fileID: 916226234}
   - component: {fileID: 916226236}
   - component: {fileID: 916226235}
+  - component: {fileID: 916226237}
   m_Layer: 8
   m_Name: Ledge (10)
   m_TagString: Ledge
@@ -2415,7 +2460,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -2453,6 +2498,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &916226237
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916226233}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1035938141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2719,6 +2785,105 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.64, y: 0.64}
   m_Direction: 1
+--- !u!1001 &1060273770
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8226483288738640195, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3682616289786039066, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3682616289786039066, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621784, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621784, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621786, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083148959772621788, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 1233841453}
+    - target: {fileID: 1083148959772621788, guid: 1bea238ffaa49184282ebd708c083558,
+        type: 3}
+      propertyPath: FacingController
+      value: 
+      objectReference: {fileID: 1233841456}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1bea238ffaa49184282ebd708c083558, type: 3}
 --- !u!1001 &1096880552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2925,6 +3090,7 @@ GameObject:
   - component: {fileID: 1131950066}
   - component: {fileID: 1131950068}
   - component: {fileID: 1131950067}
+  - component: {fileID: 1131950069}
   m_Layer: 8
   m_Name: Ledge (9)
   m_TagString: Ledge
@@ -2984,7 +3150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -3022,6 +3188,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1131950069
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131950065}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1143193796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3334,7 +3521,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -84588795
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.025295991, g: 0.20754719, b: 0.012726956, a: 0.5176471}
@@ -3371,6 +3558,7 @@ GameObject:
   - component: {fileID: 1204470623}
   - component: {fileID: 1204470625}
   - component: {fileID: 1204470624}
+  - component: {fileID: 1204470626}
   m_Layer: 8
   m_Name: Ledge (8)
   m_TagString: Ledge
@@ -3430,7 +3618,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -3468,6 +3656,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1204470626
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204470622}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1219119036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3734,6 +3943,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.64, y: 0.64}
   m_Direction: 0
+--- !u!95 &1233841453 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 613242965, guid: 1bea238ffaa49184282ebd708c083558,
+    type: 3}
+  m_PrefabInstance: {fileID: 1060273770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1233841456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1083148959772621790, guid: 1bea238ffaa49184282ebd708c083558,
+    type: 3}
+  m_PrefabInstance: {fileID: 1060273770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb54518a10fdbfc45b0e520961e36315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1265447851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3855,6 +4082,7 @@ GameObject:
   - component: {fileID: 1300282788}
   - component: {fileID: 1300282790}
   - component: {fileID: 1300282789}
+  - component: {fileID: 1300282791}
   m_Layer: 8
   m_Name: Ledge (5)
   m_TagString: Ledge
@@ -3914,7 +4142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -3952,6 +4180,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1300282791
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300282787}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1316358483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4164,6 +4413,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 5387958327306047244, guid: 615d5712273d1054fab4cdb7fef86b61,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2296373904871240289, guid: 615d5712273d1054fab4cdb7fef86b61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 615d5712273d1054fab4cdb7fef86b61, type: 3}
@@ -4316,6 +4570,7 @@ GameObject:
   - component: {fileID: 1404508928}
   - component: {fileID: 1404508930}
   - component: {fileID: 1404508929}
+  - component: {fileID: 1404508931}
   m_Layer: 8
   m_Name: Ledge (4)
   m_TagString: Ledge
@@ -4375,7 +4630,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -4413,6 +4668,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1404508931
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404508927}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1466935441
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,6 +4700,7 @@ GameObject:
   - component: {fileID: 1466935442}
   - component: {fileID: 1466935444}
   - component: {fileID: 1466935443}
+  - component: {fileID: 1466935445}
   m_Layer: 8
   m_Name: Ledge (1)
   m_TagString: Ledge
@@ -4483,7 +4760,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -4521,6 +4798,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1466935445
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466935441}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1546508732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4752,6 +5050,7 @@ GameObject:
   - component: {fileID: 1620656374}
   - component: {fileID: 1620656376}
   - component: {fileID: 1620656375}
+  - component: {fileID: 1620656377}
   m_Layer: 8
   m_Name: Ledge
   m_TagString: Ledge
@@ -4811,7 +5110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -4849,6 +5148,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1620656377
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620656373}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1657061895
 GameObject:
   m_ObjectHideFlags: 0
@@ -4860,6 +5180,7 @@ GameObject:
   - component: {fileID: 1657061896}
   - component: {fileID: 1657061898}
   - component: {fileID: 1657061897}
+  - component: {fileID: 1657061899}
   m_Layer: 8
   m_Name: Ledge (6)
   m_TagString: Ledge
@@ -4919,7 +5240,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -4957,6 +5278,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1657061899
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657061895}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1658727662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5263,6 +5605,7 @@ GameObject:
   - component: {fileID: 1708658566}
   - component: {fileID: 1708658568}
   - component: {fileID: 1708658567}
+  - component: {fileID: 1708658569}
   m_Layer: 8
   m_Name: Ledge (11)
   m_TagString: Ledge
@@ -5322,7 +5665,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -5360,6 +5703,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1708658569
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708658565}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1784153700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5481,6 +5845,7 @@ GameObject:
   - component: {fileID: 1847151535}
   - component: {fileID: 1847151537}
   - component: {fileID: 1847151536}
+  - component: {fileID: 1847151538}
   m_Layer: 8
   m_Name: Ledge (7)
   m_TagString: Ledge
@@ -5540,7 +5905,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -5578,6 +5943,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1847151538
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847151534}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1848284409
 GameObject:
   m_ObjectHideFlags: 0
@@ -5589,6 +5975,7 @@ GameObject:
   - component: {fileID: 1848284410}
   - component: {fileID: 1848284412}
   - component: {fileID: 1848284411}
+  - component: {fileID: 1848284413}
   m_Layer: 8
   m_Name: Ledge (12)
   m_TagString: Ledge
@@ -5648,7 +6035,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -5686,6 +6073,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1848284413
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848284409}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1883952888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5917,6 +6325,7 @@ GameObject:
   - component: {fileID: 1961187331}
   - component: {fileID: 1961187333}
   - component: {fileID: 1961187332}
+  - component: {fileID: 1961187334}
   m_Layer: 8
   m_Name: Ledge (3)
   m_TagString: Ledge
@@ -5976,7 +6385,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -6014,6 +6423,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &1961187334
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961187330}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1972006236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6245,6 +6675,7 @@ GameObject:
   - component: {fileID: 2040741436}
   - component: {fileID: 2040741438}
   - component: {fileID: 2040741437}
+  - component: {fileID: 2040741439}
   m_Layer: 8
   m_Name: Ledge (13)
   m_TagString: Ledge
@@ -6304,7 +6735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c98b3bbb3669ddb4c89b6c4b0e6b9287, type: 3}
   m_Color: {r: 0.053846188, g: 0.3584906, b: 0, a: 0.78039217}
   m_FlipX: 0
@@ -6342,6 +6773,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6482214, y: 0.61509156}
   m_EdgeRadius: 0
+--- !u!50 &2040741439
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040741435}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &2124884635
 PrefabInstance:
   m_ObjectHideFlags: 0
