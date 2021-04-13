@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class Player : MonoBehaviour
     private Animator Animator;
     private Animation _currentAnimation;
     private Flash Flash;
+    private GameManager instance;
+
+    private INPCBehaviour npc;
+    private bool npcNear = false;
 
     public Animation CurrentAnimation
     {
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        instance = GameManager.Instance;
         Health = GetComponent<Health>();
         Health.OnHit += OnHit;
         Health.OnDeath += OnDeath;
@@ -62,7 +66,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
         {
             CurrentAnimation = Animation.Attack_BT;
 
@@ -87,5 +91,49 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (npc != null)
+            {
+                npc.UpdateBehaviour();
+
+            }
+
+        }
+
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        Oldman oldman = other.GetComponentInParent<Oldman>();
+        if (oldman != null)
+        {
+            npc = oldman;
+            npcNear = true;
+        }
+
+        var myCastedObject = oldman as INPCBehaviour;
+        if (myCastedObject != null)
+        {
+            Debug.Log("patttattteee2222");
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Debug.Log("patttattteee1111");
+
+
+
+
+        Oldman oldman = other.GetComponentInParent<Oldman>();
+        if (oldman != null)
+        {
+            npc = null;
+            npcNear = false;
+        }
     }
 }

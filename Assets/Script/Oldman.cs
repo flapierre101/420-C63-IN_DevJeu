@@ -5,7 +5,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 
     private GameManager instance;
     private DialogueTrigger dialogueTrigger;
-
+    public Dialogue annoyed;
 
 
     void Update()
@@ -22,33 +22,43 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 
     public void Interact()
     {
-        if (instance.SavegameManager.saveData.spokeoldman == 0)
-        {
-            // dire son premier texte
-            instance.SavegameManager.saveData.spokeoldman++;
-        }
-        else if (instance.SavegameManager.saveData.spokeoldman == 1)
-        {
-            // dire 2e phrase
-            instance.SavegameManager.saveData.spokeoldman++;
-        }
-        else
-        {
-            // dire la dernière phrase à répétition.
-        }
+
+
+
+
 
     }
 
     public void UpdateBehaviour()
     {
-        throw new System.NotImplementedException();
-    }
 
-    public void OnMouseOver()
-    {
-        if (Input.GetButtonDown("Fire1"))
+        if (instance.SavegameManager.saveData.spokeoldman == 0)
         {
             FindObjectOfType<DialogueTrigger>().TriggerDialogue();
+            instance.SavegameManager.saveData.spokeoldman++;
+        }
+        else if (instance.SavegameManager.saveData.spokeoldman <= 4)
+        {
+            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            instance.SavegameManager.saveData.spokeoldman++;
+            instance.SavegameManager.saveData.hasSword = true;
+        }
+        else if (instance.SavegameManager.saveData.spokeoldman == 5)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(annoyed);
+            instance.SavegameManager.saveData.spokeoldman++;
+
+        }
+        else if (instance.SavegameManager.saveData.spokeoldman == 6)
+        {
+            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            instance.SavegameManager.saveData.spokeoldman++;
+        }
+        else if (instance.SavegameManager.saveData.spokeoldman == 7)
+        {
+            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            instance.SavegameManager.saveData.spokeoldman = 5;
         }
     }
+
 }
