@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private GameManager instance;
 
     private INPCBehaviour npc;
-    private bool npcNear = false;
+
 
     public Animation CurrentAnimation
     {
@@ -111,15 +111,11 @@ public class Player : MonoBehaviour
         Oldman oldman = other.GetComponentInParent<Oldman>();
         if (oldman != null)
         {
+            instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
             npc = oldman;
-            npcNear = true;
+
         }
 
-        var myCastedObject = oldman as INPCBehaviour;
-        if (myCastedObject != null)
-        {
-            Debug.Log("patttattteee2222");
-        }
     }
 
 
@@ -134,7 +130,6 @@ public class Player : MonoBehaviour
         if (oldman != null)
         {
             npc = null;
-            npcNear = false;
         }
     }
 

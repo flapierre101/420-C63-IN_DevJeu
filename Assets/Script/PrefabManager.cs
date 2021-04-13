@@ -4,6 +4,7 @@ public class PrefabManager : MonoBehaviour
 {
     public enum Global
     {
+        Destructable_Barrel,
         OldMan,
         Player,
 
