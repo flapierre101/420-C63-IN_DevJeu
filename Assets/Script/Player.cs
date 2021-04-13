@@ -65,7 +65,6 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CurrentAnimation = Animation.Attack_BT;
-
         }
         // si animation terminee reset currentanimation
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
@@ -87,5 +86,13 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision )
+        {
+
+        }
     }
 }
