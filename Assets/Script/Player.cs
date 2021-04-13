@@ -3,97 +3,89 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  public enum Animation
-  {
-    Idle_Down,
-    Walk,
-    Attack,
-  }
-
-  public Health Health { get; private set; }
-  public FacingController FacingController;
-  public Animator Animator;
-  private Animation _currentAnimation;
-  private BoxCollider2D playerCollider;
-
-  public Animation CurrentAnimation
-  {
-    get { return _currentAnimation; }
-    set
+    public enum Animation
     {
-      _currentAnimation = value;
-      UpdateAnimations();
+        Idle,
+        Walk,
+        Attack_BT,
     }
-  }
-  public string AnimationName
-  {
-    get
+
+    public Health Health { get; private set; }
+    private FacingController FacingController;
+    private Animator Animator;
+    private Animation _currentAnimation;
+    private Flash Flash;
+
+    public Animation CurrentAnimation
     {
-      var suffix = CurrentAnimation.ToString();
-      return suffix;
+        get { return _currentAnimation; }
+        set
+        {
+            _currentAnimation = value;
+            UpdateAnimations();
+        }
     }
-  }
-  private void UpdateAnimations()
-  {
-    var animation = AnimationName;
-    Animator.Play(animation);
-  }
-
-  void Awake()
-  {
-    Health = GetComponent<Health>();
-    Health.OnHit += OnHit;
-    Health.OnDeath += OnDeath;
-    FacingController = GetComponent<FacingController>();
-    Animator = GetComponent<Animator>();
-    playerCollider = GameManager.Instance.Player.GetComponent<BoxCollider2D>();
-  }
-
-  private void OnDeath(Health health)
-  {
-    gameObject.SetActive(false);
-  }
-
-  private void OnHit(Health health)
-  {
-    throw new NotImplementedException();
-  }
-
-  void Update()
-  {
-
-    if (gameObject.GetComponent<Rigidbody2D>().velocity.x != 0.0f || gameObject.GetComponent<Rigidbody2D>().velocity.y != 0.0f)
+    public string AnimationName
     {
-      float horizontal = Input.GetAxisRaw("Horizontal");
-      float vertical = Input.GetAxisRaw("Vertical");
-      Animator.SetFloat("FacingX", horizontal);
-      Animator.SetFloat("FacingY", vertical);
-      CurrentAnimation = Animation.Walk;
-
+        get
+        {
+            var suffix = CurrentAnimation.ToString();
+            return suffix;
+        }
     }
-    else
+    private void UpdateAnimations()
     {
-      CurrentAnimation = Animation.Idle_Down;
+        var animation = AnimationName;
+        Animator.Play(animation);
     }
-  }
 
-  private void OnTriggerEnter2D(Collider2D collider)
-  {
-    var playerPosition = playerCollider.bounds.min.y;
-    Debug.Log(collider);
+    void Awake()
+    {
+        Health = GetComponent<Health>();
+        Health.OnHit += OnHit;
+        Health.OnDeath += OnDeath;
+        FacingController = GetComponent<FacingController>();
+        Animator = GetComponent<Animator>();
+        Flash = GetComponent<Flash>();
+    }
 
-    if (collider.CompareTag("Ledge"))
+    private void OnDeath(Health health)
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnHit(Health health)
+    {
+        Flash.StartFlash();
+    }
+
+    void Update()
     {
 
-      var ledgePosition = collider.bounds.max.y;
-      if (playerPosition > ledgePosition)
-      {
-        var ledgeHeight = collider.bounds.size.y;
-        Debug.Log(ledgeHeight);
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - ledgeHeight);
-      }
+        if (Input.GetMouseButtonDown(0))
+        {
+            CurrentAnimation = Animation.Attack_BT;
 
+        }
+        // si animation terminee reset currentanimation
+        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            CurrentAnimation = Animation.Idle;
+
+        if (CurrentAnimation != Animation.Attack_BT)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            if (horizontal != 0.0f || vertical != 0.0f)
+            {
+                Animator.SetFloat("FacingX", horizontal);
+                Animator.SetFloat("FacingY", vertical);
+                CurrentAnimation = Animation.Walk;
+            }
+            else
+            {
+                CurrentAnimation = Animation.Idle;
+            }
+        }
 
     }
-  }
 }
