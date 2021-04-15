@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     public SavegameManager SavegameManager { get; private set; }
 
+    public DialogueManager DialogueManager { get; private set; }
+
     public Player Player { get; private set; }
     public Level Level { get; private set; }
     public Camera Camera { get; private set; }
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         PrefabManager = GetComponentInChildren<PrefabManager>();
         LevelManager = GetComponentInChildren<LevelManager>();
         SavegameManager = GetComponentInChildren<SavegameManager>();
+        DialogueManager = GetComponentInChildren<DialogueManager>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
