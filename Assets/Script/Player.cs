@@ -108,13 +108,15 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        Oldman oldman = other.GetComponentInParent<Oldman>();
-        if (oldman != null)
+        INPCBehaviour Inpc = other.GetComponentInParent<INPCBehaviour>();
+        if (Inpc != null)
         {
             instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
-            npc = oldman;
+            npc = Inpc;
 
         }
+
+
 
     }
 
