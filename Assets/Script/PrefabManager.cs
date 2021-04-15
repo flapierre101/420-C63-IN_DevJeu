@@ -4,6 +4,8 @@ public class PrefabManager : MonoBehaviour
 {
     public enum Global
     {
+        Destructable_Barrel,
+        OldMan,
         Player,
 
         Count
@@ -31,7 +33,7 @@ public class PrefabManager : MonoBehaviour
         // https://docs.unity3d.com/ScriptReference/Resources.html
 
         GlobalPrefabs = Resources.LoadAll<GameObject>("prefabs/global");
-        Debug.Assert((int)Global.Count == GlobalPrefabs.Length, "Prefabmanager : Global enum length " + (int)Global.Count + ") does not match Resources folder (" + GlobalPrefabs.Length + ")");
+        Debug.Assert((int)Global.Count == GlobalPrefabs.Length, "Prefabmanager : Global enum length (" + (int)Global.Count + ") does not match Resources folder (" + GlobalPrefabs.Length + ")");
 
 
         VfxPrefabs = Resources.LoadAll<GameObject>("prefabs/vfx");

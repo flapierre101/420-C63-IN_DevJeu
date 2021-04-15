@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class Player : MonoBehaviour
     private Animator Animator;
     private Animation _currentAnimation;
     private Flash Flash;
+    private GameManager instance;
+
+    private INPCBehaviour npc;
+
 
     public Animation CurrentAnimation
     {
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        instance = GameManager.Instance;
         Health = GetComponent<Health>();
         Health.OnHit += OnHit;
         Health.OnDeath += OnDeath;
@@ -48,6 +52,7 @@ public class Player : MonoBehaviour
         Animator = GetComponent<Animator>();
         Flash = GetComponent<Flash>();
     }
+
 
     private void OnDeath(Health health)
     {
@@ -62,9 +67,10 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
         {
             CurrentAnimation = Animation.Attack_BT;
+
         }
         // si animation terminee reset currentanimation
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
@@ -86,13 +92,49 @@ public class Player : MonoBehaviour
             }
         }
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision )
+        if (Input.GetKeyUp(KeyCode.E))
         {
+            if (npc != null)
+            {
+                npc.UpdateBehaviour();
+
+            }
 
         }
+
+
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        Oldman oldman = other.GetComponentInParent<Oldman>();
+        if (oldman != null)
+        {
+            instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
+            npc = oldman;
+
+        }
+
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Debug.Log("patttattteee1111");
+
+
+
+
+        Oldman oldman = other.GetComponentInParent<Oldman>();
+        if (oldman != null)
+        {
+            npc = null;
+        }
+    }
+
+
+
+
+
 }
