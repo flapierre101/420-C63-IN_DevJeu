@@ -6,11 +6,14 @@ public class PlayerWeapon : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.GetComponent<DestructableBarrel>() != null)
+        var objet = collision.gameObject.GetComponent<IDestructable>();
+        var stop = 1;
+        if (objet != null)
         {
-            collision.GetComponent<DestructableBarrel>().Health.Value -= 1;
+            objet.Health.Value -= 1;
         }
+     
+        
         
     }
 }
