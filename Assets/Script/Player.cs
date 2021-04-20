@@ -10,13 +10,13 @@ public class Player : MonoBehaviour
   }
 
   public Health Health { get; private set; }
-  private FacingController FacingController;
-  private Animator Animator;
-  private Animation _currentAnimation;
-  private Flash Flash;
-  private GameManager instance;
-
-  private INPCBehaviour npc;
+    private FacingController FacingController;
+    private Animator Animator;
+    private Animation _currentAnimation;
+    private Flash Flash;
+    private GameManager instance;
+    private INPCBehaviour npc;
+    private float npcTimer;
 
 
   public Animation CurrentAnimation
@@ -48,9 +48,11 @@ public class Player : MonoBehaviour
     Health = GetComponent<Health>();
     Health.OnHit += OnHit;
     Health.OnDeath += OnDeath;
+    Health.OnHeal += OnHeal;
     FacingController = GetComponent<FacingController>();
     Animator = GetComponent<Animator>();
     Flash = GetComponent<Flash>();
+    npcTimer = 0.0f;
   }
 
 
@@ -64,8 +66,17 @@ public class Player : MonoBehaviour
     Flash.StartFlash();
   }
 
+  private void OnHeal(Health health)
+    {
+        instance.UIManager.gainHeart();
+    }
+
   void Update()
   {
+    if (npcTimer > 0.0f)
+        {
+            npcTimer = npcTimer - Time.deltaTime;
+        }
 
     if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
     {
@@ -101,35 +112,45 @@ public class Player : MonoBehaviour
       }
 
     }
-
-
+    // Pour debug le heart UI
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            Health.Value -= 1;
+        }
+        // Pour debug le heart UI
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            Health.Value += 1;
+        }
   }
 
   private void OnTriggerEnter2D(Collider2D other)
-  {
-
-    Oldman oldman = other.GetComponentInParent<Oldman>();
-    if (oldman != null)
     {
-      instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
-      npc = oldman;
+
+        INPCBehaviour Inpc = other.GetComponentInParent<INPCBehaviour>();
+        if (Inpc != null)
+        {
+            if (npcTimer <= 0.0f)
+            {
+                instance.SoundManager.Play(SoundManager.Sfx.heyListen);
+                npcTimer = 5.0f;
+
+            }
+            npc = Inpc;
+
+        }
+
+
 
     }
 
-  }
 
-
-  private void OnTriggerExit2D(Collider2D other)
-  {
-    Oldman oldman = other.GetComponentInParent<Oldman>();
-    if (oldman != null)
+    private void OnTriggerExit2D(Collider2D other)
     {
-      npc = null;
+        Oldman oldman = other.GetComponentInParent<Oldman>();
+        if (oldman != null)
+        {
+            npc = null;
+        }
     }
-  }
-
-
-
-
-
 }
