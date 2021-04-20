@@ -4,14 +4,9 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 {
 
     private GameManager instance;
-    private DialogueTrigger dialogueTrigger;
     public Dialogue annoyed;
 
 
-    void Update()
-    {
-
-    }
 
 
     public void Awake()
@@ -20,14 +15,13 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 
     }
 
+    //Pour l'interface IInterractable 
     public void Interact()
     {
-
-
-
-
-
+        throw new System.NotImplementedException();
     }
+
+
 
     public void UpdateBehaviour()
     {
@@ -37,17 +31,24 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
             FindObjectOfType<DialogueTrigger>().TriggerDialogue();
             instance.SavegameManager.saveData.spokeoldman++;
         }
-        else if (instance.SavegameManager.saveData.spokeoldman <= 4)
+        else if (instance.SavegameManager.saveData.spokeoldman == 3)
         {
             FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
             instance.SavegameManager.saveData.spokeoldman++;
             instance.SavegameManager.saveData.hasSword = true;
+            instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.Sword;
+            instance.UIManager.updateWeapon();
+            instance.SoundManager.Play(SoundManager.Sfx.itemCatch);
+        }
+        else if (instance.SavegameManager.saveData.spokeoldman <= 4)
+        {
+            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            instance.SavegameManager.saveData.spokeoldman++;
         }
         else if (instance.SavegameManager.saveData.spokeoldman == 5)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(annoyed);
             instance.SavegameManager.saveData.spokeoldman++;
-
         }
         else if (instance.SavegameManager.saveData.spokeoldman == 6)
         {
@@ -60,5 +61,6 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
             instance.SavegameManager.saveData.spokeoldman = 5;
         }
     }
+
 
 }

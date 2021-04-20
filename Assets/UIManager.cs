@@ -6,22 +6,38 @@ public class UIManager : MonoBehaviour
     public RawImage heart1;
     public RawImage heart2;
     public RawImage heart3;
+    public RawImage woodenSword;
+    public RawImage currentWeapon;
 
-    private int currentHealth;
+
+
     private GameManager instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = 3;
         instance = GameManager.Instance;
-
+        woodenSword.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void updateWeapon()
+    {
+        if (currentWeapon)
+            currentWeapon.enabled = false;
+
+        Debug.Log(instance.SavegameManager.saveData.equipedWeapon);
+        if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.Sword)
+        {
+            currentWeapon = woodenSword;
+        }
+
+        currentWeapon.enabled = true;
     }
 
     public void loseHeart()
@@ -40,16 +56,13 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
-        if (currentHealth > 0)
-        {
-            currentHealth -= 1;
-        }
+
     }
 
     public void gainHeart()
     {
 
-        switch (currentHealth)
+        switch (instance.Player.Health.Value)
         {
             case 2:
                 heart3.enabled = true;
@@ -63,9 +76,6 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
-        if (currentHealth < 3)
-        {
-            currentHealth += 1;
-        }
+
     }
 }

@@ -667,6 +667,7 @@ MonoBehaviour:
     hasSword: 0
     hasBoomerang: 0
     hasSomeUpgrade: 1
+    equipedWeapon: 2
     spokeoldman: 0
 --- !u!1 &6193316289926433678
 GameObject:
@@ -785,6 +786,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8070176924591945104, guid: 4a1d2c0ca2f4b554286fa08647fd5dcb,
+        type: 3}
+      propertyPath: BasicSword
+      value: 
+      objectReference: {fileID: 4126927597128080275}
+    - target: {fileID: 8070176924591945104, guid: 4a1d2c0ca2f4b554286fa08647fd5dcb,
+        type: 3}
+      propertyPath: woodenSword
+      value: 
+      objectReference: {fileID: 4126927597128080275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a1d2c0ca2f4b554286fa08647fd5dcb, type: 3}
 --- !u!4 &4126927597948839781 stripped
@@ -793,3 +804,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1488316576234093613}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4126927597128080275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3306304868520650686, guid: 4a1d2c0ca2f4b554286fa08647fd5dcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1488316576234093613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

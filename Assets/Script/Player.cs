@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
         {
             if (npcTimer <= 0.0f)
             {
-                instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
+                instance.SoundManager.Play(SoundManager.Sfx.heyListen);
                 npcTimer = 5.0f;
 
             }

@@ -11,7 +11,8 @@ public class SoundManager : MonoBehaviour
 
     public enum Sfx
     {
-        hey_listen,
+        heyListen,
+        itemCatch,
 
         Count
     };
