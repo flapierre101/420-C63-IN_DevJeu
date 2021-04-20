@@ -29,7 +29,7 @@ public class DestructableBarrel : MonoBehaviour, IDestructable
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Health.Value == 0)
         {
             Destroy(gameObject);
-            itemSpawn = Random.Range(1, 3);
+            itemSpawn = Random.Range(1, 4);
 
             switch (itemSpawn)
             {
