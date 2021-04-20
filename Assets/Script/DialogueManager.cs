@@ -11,14 +11,17 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
-
+    private GameManager instance;
     void Start()
     {
+        instance = GameManager.Instance;
         sentences = new Queue<string>();
     }
 
     internal void StartDialogue(Dialogue dialogue)
     {
+        instance.Player.GetComponent<ControllerMovement>().enabled = false;
+
         animator.SetBool("IsOpen", true);
         Debug.Log("Starting conversation with " + dialogue.name);
         nameText.text = dialogue.name;
@@ -57,6 +60,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        instance.Player.GetComponent<ControllerMovement>().enabled = true;
         animator.SetBool("IsOpen", false);
         Debug.Log("End of conversation");
     }
