@@ -22,9 +22,12 @@ public class DestructableBarrel : MonoBehaviour, IDestructable
     {
         Animator.enabled = true;
         Animator.Play("Destroy_Barrel");
-        
     }
 
-
+    private void Update()
+    {
+        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Health.Value == 0)
+            Destroy(gameObject);
+    }
 
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructableWoodenCrate : MonoBehaviour, IDestructable
+public class DestructableMetalCrate : MonoBehaviour, IDestructable
 {
     public Health Health { get; private set; }
     public Animator Animator { get; private set; }
@@ -18,7 +18,7 @@ public class DestructableWoodenCrate : MonoBehaviour, IDestructable
     private void OnDeath(Health health)
     {
         Animator.enabled = true;
-        Animator.Play("Destroy_WoodenCrate");
+        Animator.Play("Destroy_MetalCrate");
 
     }
 
