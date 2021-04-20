@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     }
 
     public Health Health { get; private set; }
+    public Mana Mana { get; private set; }
     private FacingController FacingController;
     private Animator Animator;
     private Animation _currentAnimation;
@@ -48,11 +49,17 @@ public class Player : MonoBehaviour
         Health = GetComponent<Health>();
         Health.OnHit += OnHit;
         Health.OnDeath += OnDeath;
+        Mana = GetComponent<Mana>();
+        Mana.OnUse += OnUse;
         FacingController = GetComponent<FacingController>();
         Animator = GetComponent<Animator>();
         Flash = GetComponent<Flash>();
     }
 
+    private void OnUse(Mana mana)
+    {
+        mana.Value--;
+    }
 
     private void OnDeath(Health health)
     {
