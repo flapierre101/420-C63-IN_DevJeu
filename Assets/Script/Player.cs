@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     private Animation _currentAnimation;
     private Flash Flash;
     private GameManager instance;
-
     private INPCBehaviour npc;
+    private float npcTimer;
 
 
     public Animation CurrentAnimation
@@ -48,10 +48,14 @@ public class Player : MonoBehaviour
         Health = GetComponent<Health>();
         Health.OnHit += OnHit;
         Health.OnDeath += OnDeath;
+        Health.OnHeal += OnHeal;
         FacingController = GetComponent<FacingController>();
         Animator = GetComponent<Animator>();
         Flash = GetComponent<Flash>();
+
+        npcTimer = 0.0f;
     }
+
 
 
     private void OnDeath(Health health)
@@ -62,10 +66,20 @@ public class Player : MonoBehaviour
     private void OnHit(Health health)
     {
         Flash.StartFlash();
+        instance.UIManager.loseHeart();
+    }
+
+    private void OnHeal(Health health)
+    {
+        instance.UIManager.gainHeart();
     }
 
     void Update()
     {
+        if (npcTimer > 0.0f)
+        {
+            npcTimer = npcTimer - Time.deltaTime;
+        }
 
         if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
         {
@@ -102,6 +116,17 @@ public class Player : MonoBehaviour
 
         }
 
+        // Pour debug le heart UI
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            Health.Value -= 1;
+        }
+        // Pour debug le heart UI
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            Health.Value += 1;
+        }
+
 
     }
 
@@ -111,7 +136,12 @@ public class Player : MonoBehaviour
         INPCBehaviour Inpc = other.GetComponentInParent<INPCBehaviour>();
         if (Inpc != null)
         {
-            instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
+            if (npcTimer <= 0.0f)
+            {
+                instance.SoundManager.Play(SoundManager.Sfx.hey_listen);
+                npcTimer = 5.0f;
+
+            }
             npc = Inpc;
 
         }

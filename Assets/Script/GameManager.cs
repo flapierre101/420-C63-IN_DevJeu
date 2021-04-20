@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public LevelManager LevelManager { get; private set; }
 
     public SavegameManager SavegameManager { get; private set; }
+    public UIManager UIManager { get; private set; }
 
     public DialogueManager DialogueManager { get; private set; }
 
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
     private void Initialize()
     {
         SoundManager = GetComponentInChildren<SoundManager>();
+        UIManager = GetComponentInChildren<UIManager>();
         PrefabManager = GetComponentInChildren<PrefabManager>();
         LevelManager = GetComponentInChildren<LevelManager>();
         SavegameManager = GetComponentInChildren<SavegameManager>();
