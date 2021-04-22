@@ -6,8 +6,16 @@ public class UIManager : MonoBehaviour
     public RawImage heart1;
     public RawImage heart2;
     public RawImage heart3;
+    public RawImage mana0;
+    public RawImage mana25;
+    public RawImage mana50;
+    public RawImage mana75;
+    public RawImage mana100;
     public RawImage woodenSword;
+    public RawImage masterSword;
     public RawImage currentWeapon;
+    public RawImage currentMana;
+
 
 
 
@@ -18,6 +26,8 @@ public class UIManager : MonoBehaviour
     {
         instance = GameManager.Instance;
         woodenSword.enabled = false;
+        masterSword.enabled = false;
+        currentMana = mana100;
     }
 
     // Update is called once per frame
@@ -36,21 +46,36 @@ public class UIManager : MonoBehaviour
         {
             currentWeapon = woodenSword;
         }
+        if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.MasterSword)
+        {
+            currentWeapon = masterSword;
+        }
 
         currentWeapon.enabled = true;
     }
 
-    public void loseHeart()
+    public void updateHeart()
     {
         switch (instance.Player.Health.Value)
         {
+            case 3:
+                heart3.enabled = true;
+                heart2.enabled = true;
+                heart1.enabled = true;
+                break;
             case 2:
                 heart3.enabled = false;
+                heart2.enabled = true;
+                heart1.enabled = true;
                 break;
             case 1:
+                heart3.enabled = false;
                 heart2.enabled = false;
+                heart1.enabled = true;
                 break;
             case 0:
+                heart3.enabled = false;
+                heart2.enabled = false;
                 heart1.enabled = false;
                 break;
             default:
@@ -59,23 +84,33 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void gainHeart()
+    public void updateMana()
     {
+        if (currentMana)
+            currentMana.enabled = false;
 
-        switch (instance.Player.Health.Value)
+        switch (instance.Player.Mana.Value)
         {
+            case 4:
+                currentMana = mana100;
+                break;
+            case 3:
+                currentMana = mana75;
+                break;
             case 2:
-                heart3.enabled = true;
+                currentMana = mana50;
                 break;
             case 1:
-                heart2.enabled = true;
+                currentMana = mana25;
                 break;
             case 0:
-                heart1.enabled = true;
+                currentMana = mana0;
                 break;
             default:
                 break;
         }
+        Debug.Log("patate" + instance.Player.Mana.Value);
+        currentMana.enabled = true;
 
     }
 }
