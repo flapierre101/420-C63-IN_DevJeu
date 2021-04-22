@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructableWoodenCrate : MonoBehaviour, IDestructable
+public class DestructableWoodenCrate : DestructableSuperClass
 {
-    public Health Health { get; private set; }
     public Animator Animator { get; private set; }
 
     void Awake()
     {
+        base.Awake();
         Animator = GetComponent<Animator>();
         Animator.enabled = false;
-        Health = GetComponent<Health>();
         Health.OnDeath += OnDeath;
     }
 
@@ -25,6 +24,10 @@ public class DestructableWoodenCrate : MonoBehaviour, IDestructable
     private void Update()
     {
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Health.Value == 0)
+        {
             Destroy(gameObject);
+            DropItem();
+        }
+
     }
 }
