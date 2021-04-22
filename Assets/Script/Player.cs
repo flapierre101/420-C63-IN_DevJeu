@@ -2,14 +2,15 @@
 
 public class Player : MonoBehaviour
 {
-  public enum Animation
-  {
-    Idle,
-    Walk,
-    Attack_BT,
-  }
+    public enum Animation
+    {
+        Idle,
+        Walk,
+        Attack_BT,
+    }
 
-  public Health Health { get; private set; }
+    public Health Health { get; private set; }
+    public Mana Mana { get; private set; }
     private FacingController FacingController;
     private Animator Animator;
     private Animation _currentAnimation;
@@ -68,8 +69,15 @@ public class Player : MonoBehaviour
 
   private void OnHeal(Health health)
     {
+        var animation = AnimationName;
+        Animator.Play(animation);
         instance.UIManager.gainHeart();
     }
+
+  private void OnUse(Mana mana)
+  {
+      mana.Value--;
+  }
 
   void Update()
   {
