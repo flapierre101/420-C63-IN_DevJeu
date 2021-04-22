@@ -29,15 +29,15 @@ public class DestructableBarrel : MonoBehaviour, IDestructable
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Health.Value == 0)
         {
             Destroy(gameObject);
-            itemSpawn = Random.Range(1, 4);
+            itemSpawn = Random.Range(1, 101);
 
             switch (itemSpawn)
             {
-                case 1: GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Consumable_BluePotion, gameObject.transform.position, gameObject.transform.rotation);
+                case int n when n >= 1 && n <= 25: GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Consumable_BluePotion, gameObject.transform.position, gameObject.transform.rotation);
                     break;
-                case 2: GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Consumable_Heart, gameObject.transform.position, gameObject.transform.rotation);
+                case int n when n >= 26 && n <= 50: GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Consumable_Heart, gameObject.transform.position, gameObject.transform.rotation);
                     break;
-                case 3: GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Consumable_RedPotion, gameObject.transform.position, gameObject.transform.rotation);
+                case int n when n >= 51 && n <= 75: GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Consumable_RedPotion, gameObject.transform.position, gameObject.transform.rotation);
                     break;
                 default:
                     break;
