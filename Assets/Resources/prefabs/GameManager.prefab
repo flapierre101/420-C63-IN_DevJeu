@@ -786,6 +786,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3306304869005789811, guid: 4a1d2c0ca2f4b554286fa08647fd5dcb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8070176924591945104, guid: 4a1d2c0ca2f4b554286fa08647fd5dcb,
         type: 3}
       propertyPath: BasicSword

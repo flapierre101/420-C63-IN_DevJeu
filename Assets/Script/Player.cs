@@ -153,7 +153,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("patttattteee1111");
 
 
 
