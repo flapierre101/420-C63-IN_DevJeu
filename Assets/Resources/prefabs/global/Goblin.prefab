@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 942102874276047011}
   - component: {fileID: 942102874276047010}
   - component: {fileID: 942102874276047005}
-  - component: {fileID: 8186286262910270053}
   - component: {fileID: 2217846576543645153}
+  - component: {fileID: 671321048425517903}
+  - component: {fileID: 7460512254311068214}
   m_Layer: 13
   m_Name: Goblin
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialFacing: -1
+  Animator: {fileID: 0}
 --- !u!95 &942102874276047011
 Animator:
   serializedVersion: 3
@@ -146,21 +148,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22452888, y: 0.37032613}
   m_EdgeRadius: 0
---- !u!114 &8186286262910270053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942102874276047004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11c6947abffe0b47a4e521513d0dd5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerInRange: 0
-  FacingController: {fileID: 0}
-  Animator: {fileID: 0}
 --- !u!50 &2217846576543645153
 Rigidbody2D:
   serializedVersion: 4
@@ -182,6 +169,33 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &671321048425517903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942102874276047004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11c6947abffe0b47a4e521513d0dd5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerInRange: 0
+  FacingController: {fileID: 0}
+  Animator: {fileID: 0}
+--- !u!114 &7460512254311068214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942102874276047004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587a1b790d85e264d8e7664e7f62adfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &942102875417218396
 GameObject:
   m_ObjectHideFlags: 0

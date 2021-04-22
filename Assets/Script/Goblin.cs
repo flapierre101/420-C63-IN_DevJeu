@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Goblin : MonoBehaviour
+public class Goblin : EnemyAI
 {
   public enum Animation
   {
@@ -40,25 +40,24 @@ public class Goblin : MonoBehaviour
   private void Awake()
   {
     PlayerInRange = false;
+    FacingController = GetComponent<FacingController>();
+    Animator = GetComponent<Animator>();
+    FacingController.Facing = Facing.Left;
+    CurrentAnimation = Animation.Attack;
+    UpdateAnimations();
   }
 
   // Update is called once per frame
   void Update()
   {
-    FacingController = GetComponent<FacingController>();
-    Animator = GetComponent<Animator>();
-    CurrentAnimation = Animation.Attack;
-    FacingController.Facing = Facing.Left;
-    UpdateAnimations();
+
   }
 
   private void OnTriggerStay2D(Collider2D collision)
   {
-    Debug.Log("INSIDE ON TRIGGER");
 
     if (collision.CompareTag("Player"))
     {
-      Debug.Log("INSIDE ON TRIGGER TAG PLAYER");
       playerHealth = collision.GetComponentInParent<Health>();
       PlayerInRange = true;
     }
@@ -79,5 +78,7 @@ public class Goblin : MonoBehaviour
       playerHealth.Value -= 1;
       Debug.Log(playerHealth.Value);
     }
+
+    CurrentAnimation = Animation.Walk;
   }
 }
