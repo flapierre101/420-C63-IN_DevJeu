@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     {
         heyListen,
         itemCatch,
+        martha,
 
         Count
     };
