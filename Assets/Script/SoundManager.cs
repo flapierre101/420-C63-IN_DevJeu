@@ -5,6 +5,7 @@ public class SoundManager : MonoBehaviour
     public enum Music
     {
         Music,
+        Titlescreen,
 
         Count
     }
