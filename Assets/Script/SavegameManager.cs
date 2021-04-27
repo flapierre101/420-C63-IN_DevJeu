@@ -2,7 +2,7 @@
 
 public class SavegameManager : MonoBehaviour
 {
-    public SaveData saveData;
+    SaveData saveData;
     // Start is called before the first frame update
     void Awake()
     {

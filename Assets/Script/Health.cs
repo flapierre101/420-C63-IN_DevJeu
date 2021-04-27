@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     public int Max = 5;
-
+   
 
     // delegate signature de fonction
     public delegate void HealthEvent(Health health);
@@ -12,7 +14,6 @@ public class Health : MonoBehaviour
     public HealthEvent OnChanged;
     public HealthEvent OnHit;
     public HealthEvent OnDeath;
-    public HealthEvent OnHeal;
     private int _value;
 
     public float InvincibilityTime = 0.1f;
@@ -41,13 +42,7 @@ public class Health : MonoBehaviour
                 InvincibilityTimer = InvincibilityTime;
                 OnHit?.Invoke(this);
             }
-
-            if (_value > previous)
-            {
-                InvincibilityTimer = InvincibilityTime;
-                OnHeal?.Invoke(this);
-            }
-
+                
 
             if (_value <= 0)
                 OnDeath?.Invoke(this);
