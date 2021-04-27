@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public Health Health { get; private set; }
     public Mana Mana { get; private set; }
-    private FacingController FacingController;
+    public Transform SlashSpawn;
     private Animator Animator;
     private Animation _currentAnimation;
     private Flash Flash;
@@ -20,107 +20,125 @@ public class Player : MonoBehaviour
     private float npcTimer;
 
 
-  public Animation CurrentAnimation
-  {
-    get { return _currentAnimation; }
-    set
+    public Animation CurrentAnimation
     {
-      _currentAnimation = value;
-      UpdateAnimations();
+        get { return _currentAnimation; }
+        set
+        {
+            _currentAnimation = value;
+            UpdateAnimations();
+        }
     }
-  }
-  public string AnimationName
-  {
-    get
+    public string AnimationName
     {
-      var suffix = CurrentAnimation.ToString();
-      return suffix;
+        get
+        {
+            var suffix = CurrentAnimation.ToString();
+            return suffix;
+        }
     }
-  }
-  private void UpdateAnimations()
-  {
-    var animation = AnimationName;
-    Animator.Play(animation);
-  }
+    private void UpdateAnimations()
+    {
+        var animation = AnimationName;
+        Animator.Play(animation);
+    }
 
-  void Awake()
-  {
-    instance = GameManager.Instance;
-    Health = GetComponent<Health>();
-    Health.OnHit += OnHit;
-    Health.OnDeath += OnDeath;
-    Health.OnHeal += OnHeal;
-    FacingController = GetComponent<FacingController>();
-    Animator = GetComponent<Animator>();
-    Flash = GetComponent<Flash>();
-    npcTimer = 0.0f;
-  }
+    void Awake()
+    {
+        instance = GameManager.Instance;
+        Health = GetComponent<Health>();
+        Health.OnHit += OnHit;
+        Health.OnDeath += OnDeath;
+        Health.OnHeal += OnHeal;
+        Animator = GetComponent<Animator>();
+        Flash = GetComponent<Flash>();
+        npcTimer = 0.0f;
+    }
 
 
-  private void OnDeath(Health health)
-  {
-    gameObject.SetActive(false);
-  }
+    private void OnDeath(Health health)
+    {
+        gameObject.SetActive(false);
+    }
 
-  private void OnHit(Health health)
-  {
-    Flash.StartFlash();
-  }
+    private void OnHit(Health health)
+    {
+        Flash.StartFlash();
+    }
 
-  private void OnHeal(Health health)
+    private void OnHeal(Health health)
     {
         var animation = AnimationName;
         Animator.Play(animation);
         instance.UIManager.gainHeart();
     }
 
-  private void OnUse(Mana mana)
-  {
-      mana.Value--;
-  }
+    private void OnUse(Mana mana)
+    {
+        mana.Value--;
+    }
 
-  void Update()
-  {
-    if (npcTimer > 0.0f)
+    void Update()
+    {
+        if (npcTimer > 0.0f)
         {
             npcTimer = npcTimer - Time.deltaTime;
         }
 
-    if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
-    {
-      CurrentAnimation = Animation.Attack_BT;
+        if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
+        {
+            CurrentAnimation = Animation.Attack_BT;
+            Animator.Update(0);
+            if (Animator.GetFloat("FacingX") == 1)
+            {
+                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashRight, SlashSpawn.position, SlashSpawn.rotation);
+            }
+            else if (Animator.GetFloat("FacingX") == -1)
+            {
+                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashLeft, SlashSpawn.position, SlashSpawn.rotation);
+            }
+            else if (Animator.GetFloat("FacingY") == -1)
+            {
+                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashDown, SlashSpawn.position, SlashSpawn.rotation);
+            }
+            else if (Animator.GetFloat("FacingY") == 1)
+            {
+                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashUp, SlashSpawn.position, SlashSpawn.rotation);
+            }
 
-    }
-    // si animation terminee reset currentanimation
-    if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-      CurrentAnimation = Animation.Idle;
 
-    if (CurrentAnimation != Animation.Attack_BT)
-    {
-      float horizontal = Input.GetAxisRaw("Horizontal");
-      float vertical = Input.GetAxisRaw("Vertical");
-      if (horizontal != 0.0f || vertical != 0.0f)
-      {
-        Animator.SetFloat("FacingX", horizontal);
-        Animator.SetFloat("FacingY", vertical);
-        CurrentAnimation = Animation.Walk;
-      }
-      else
-      {
-        CurrentAnimation = Animation.Idle;
-      }
-    }
+        }
 
-    if (Input.GetKeyUp(KeyCode.E))
-    {
-      if (npc != null)
-      {
-        npc.UpdateBehaviour();
+        // si animation terminee reset currentanimation
+        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            CurrentAnimation = Animation.Idle;
 
-      }
+        if (CurrentAnimation != Animation.Attack_BT)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            if (horizontal != 0.0f || vertical != 0.0f)
+            {
+                Animator.SetFloat("FacingX", horizontal);
+                Animator.SetFloat("FacingY", vertical);
+                CurrentAnimation = Animation.Walk;
+            }
+            else
+            {
+                CurrentAnimation = Animation.Idle;
+            }
+        }
 
-    }
-    // Pour debug le heart UI
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (npc != null)
+            {
+                npc.UpdateBehaviour();
+
+            }
+
+        }
+        // Pour debug le heart UI
         if (Input.GetKeyUp(KeyCode.H))
         {
             Health.Value -= 1;
@@ -130,9 +148,9 @@ public class Player : MonoBehaviour
         {
             Health.Value += 1;
         }
-  }
+    }
 
-  private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
 
         INPCBehaviour Inpc = other.GetComponentInParent<INPCBehaviour>();
