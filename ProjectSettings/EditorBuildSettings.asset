@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/WorldMap.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Town.unity
+    guid: 0e25383f19365814ab907ed32ef813db
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: acce5e7a5ea215c4aa2ae562f7dfbd20
+  - enabled: 0
     path: Assets/Scenes/Dungeon.unity
     guid: ff31e3a190e8c4744ad70217f5e065b7
   m_configObjects: {}

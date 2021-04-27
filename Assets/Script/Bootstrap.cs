@@ -8,6 +8,7 @@ public class Bootstrap : MonoBehaviour
     private void Awake()
     {
         instance = GameManager.Instance;
+        instance.bootstrap();
 
     }
 }
