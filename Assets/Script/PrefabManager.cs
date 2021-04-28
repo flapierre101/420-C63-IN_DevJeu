@@ -12,6 +12,7 @@ public class PrefabManager : MonoBehaviour
         Destructable_MetalCrate,
         Destructable_WoodCrate,
         Goblin,
+        MasterSlashLeft,
         MasterSlashRight,
         OldMan,
         Player,

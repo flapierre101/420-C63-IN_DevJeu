@@ -91,19 +91,28 @@ public class Player : MonoBehaviour
             Animator.Update(0);
             if (Animator.GetFloat("FacingX") == 1)
             {
-                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashRight, SlashSpawn.position, SlashSpawn.rotation);
+                if (instance.SavegameManager.saveData.hasMasterSword)
+                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashRight, SlashSpawn.position, SlashSpawn.rotation);
+                else
+                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashRight, SlashSpawn.position, SlashSpawn.rotation);
             }
             else if (Animator.GetFloat("FacingX") == -1)
             {
+                if (instance.SavegameManager.saveData.hasMasterSword)
+                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashLeft, SlashSpawn.position, SlashSpawn.rotation);
                 GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashLeft, SlashSpawn.position, SlashSpawn.rotation);
             }
             else if (Animator.GetFloat("FacingY") == -1)
             {
-                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashDown, SlashSpawn.position, SlashSpawn.rotation);
+                if (instance.SavegameManager.saveData.hasMasterSword)
+                    //GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashDown, SlashSpawn.position, SlashSpawn.rotation);
+                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashDown, SlashSpawn.position, SlashSpawn.rotation);
             }
             else if (Animator.GetFloat("FacingY") == 1)
             {
-                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashUp, SlashSpawn.position, SlashSpawn.rotation);
+                if (instance.SavegameManager.saveData.hasMasterSword)
+                    //GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashUp, SlashSpawn.position, SlashSpawn.rotation);
+                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashUp, SlashSpawn.position, SlashSpawn.rotation);
             }
 
 
