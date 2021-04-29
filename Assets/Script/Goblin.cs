@@ -44,7 +44,7 @@ public class Goblin : MonoBehaviour
   private float rushSpeed = 0.01f;
   private float attackTimer = 1.0f;
   private bool onCoolDown = false;
-  private void Awake()
+  private void Start()
   {
     playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
     FacingController = GetComponent<FacingController>();

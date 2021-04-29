@@ -4,110 +4,110 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public enum Level
+  public enum Level
+  {
+    Invalid = -1,
+
+    // Define value by hand
+    MainMenu = 0,
+    WorldMap = 100,
+    Town = 200,
+    Forest = 300,
+
+
+
+    // Or add new at the end and never delete
+  }
+
+  public Level CurrentLevel { get; private set; } = Level.Invalid;
+  public string LevelEntranceId { get; private set; } = "Default";
+  public LevelEntrance LevelEntrance { get; private set; }
+  public LevelEntrance[] LevelEntrances { get; private set; }
+  public LevelExit[] LevelExits { get; private set; }
+
+  public void Awake()
+  {
+    var sceneName = SceneManager.GetActiveScene().name;
+    CurrentLevel = (Level)Enum.Parse(typeof(Level), sceneName, true);
+
+    foreach (Level level in Enum.GetValues(typeof(Level)))
     {
-        Invalid = -1,
+      var scene = SceneManager.GetSceneByName(level.ToString());
+      Debug.Assert(scene != null, "LevelManager : Scene is missing for " + level.ToString());
+    }
+  }
 
-        // Define value by hand
-        MainMenu = 0,
-        WorldMap = 100,
-        Town = 200,
-        Forest = 300,
+  public void GoToLevel(Level level, string levelEntranceId)
+  {
+    LevelEntranceId = levelEntranceId;
 
+    if (level == CurrentLevel)
+    {
+      OnLevelStartCommon();
+      //SceneManager.LoadScene(level.ToString());
+    }
+    else
+    {
+      CurrentLevel = level;
 
-
-        // Or add new at the end and never delete
+      GameManager.Instance.Player.gameObject.SetActive(false);
+      SceneManager.LoadScene(level.ToString());
     }
 
-    public Level CurrentLevel { get; private set; } = Level.Invalid;
-    public string LevelEntranceId { get; private set; } = "Default";
-    public LevelEntrance LevelEntrance { get; private set; }
-    public LevelEntrance[] LevelEntrances { get; private set; }
-    public LevelExit[] LevelExits { get; private set; }
+  }
 
-    public void Awake()
+  public void OnLevelStart()
+  {
+    LevelEntrances = FindObjectsOfType<LevelEntrance>();
+    LevelExits = FindObjectsOfType<LevelExit>();
+    DebugCheckForErrors();
+
+    GameManager.Instance.Camera.GetComponent<FollowObject>().TargetTransform = GameManager.Instance.Player.transform;
+    GameManager.Instance.Player.gameObject.SetActive(true);
+
+    OnLevelStartCommon();
+  }
+
+  private void OnLevelStartCommon()
+  {
+    LevelEntrance = FindLevelEntrance();
+
+    GameManager.Instance.Player.OnLevelStart(LevelEntrance);
+  }
+
+  private LevelEntrance FindLevelEntrance()
+  {
+    for (int i = 0; i < LevelEntrances.Length; i++)
     {
-        var sceneName = SceneManager.GetActiveScene().name;
-        CurrentLevel = (Level)Enum.Parse(typeof(Level), sceneName, true);
+      var levelEntrance = LevelEntrances[i];
+      if (levelEntrance.Id == LevelEntranceId)
+        return levelEntrance;
+    }
 
-        foreach (Level level in Enum.GetValues(typeof(Level)))
+    Debug.LogError("LevelManager : Could not find LevelEntrance for Id " + LevelEntranceId);
+    return null;
+  }
+
+  private void DebugCheckForErrors()
+  {
+    for (int i = 0; i < LevelEntrances.Length; i++)
+    {
+      var id = LevelEntrances[i].Id;
+      for (int j = i + 1; j < LevelEntrances.Length; j++)
+      {
+        if (id == LevelEntrances[j].Id)
         {
-            var scene = SceneManager.GetSceneByName(level.ToString());
-            Debug.Assert(scene != null, "LevelManager : Scene is missing for " + level.ToString());
+          Debug.LogError("LevelManager : LevelEntrance duplicate found for Id " + id, LevelEntrances[j]);
         }
+      }
     }
 
-    public void GoToLevel(Level level, string levelEntranceId)
+    for (int i = 0; i < LevelExits.Length; i++)
     {
-        LevelEntranceId = levelEntranceId;
-
-        if (level == CurrentLevel)
-        {
-            OnLevelStartCommon();
-            SceneManager.LoadScene(level.ToString());
-        }
-        else
-        {
-            CurrentLevel = level;
-
-            GameManager.Instance.Player.gameObject.SetActive(false);
-            SceneManager.LoadScene(level.ToString());
-        }
-
+      if (LevelExits[i].Level == Level.Invalid)
+      {
+        Debug.LogError("LevelManager : LevelExit has not been configured", LevelExits[i]);
+      }
     }
-
-    public void OnLevelStart()
-    {
-        LevelEntrances = FindObjectsOfType<LevelEntrance>();
-        LevelExits = FindObjectsOfType<LevelExit>();
-        DebugCheckForErrors();
-
-        GameManager.Instance.Camera.GetComponent<FollowObject>().TargetTransform = GameManager.Instance.Player.transform;
-        GameManager.Instance.Player.gameObject.SetActive(true);
-
-        OnLevelStartCommon();
-    }
-
-    private void OnLevelStartCommon()
-    {
-        LevelEntrance = FindLevelEntrance();
-
-        // TODO GameManager.Instance.Player.OnLevelStart(LevelEntrance);
-    }
-
-    private LevelEntrance FindLevelEntrance()
-    {
-        for (int i = 0; i < LevelEntrances.Length; i++)
-        {
-            var levelEntrance = LevelEntrances[i];
-            if (levelEntrance.Id == LevelEntranceId)
-                return levelEntrance;
-        }
-
-        Debug.LogError("LevelManager : Could not find LevelEntrance for Id " + LevelEntranceId);
-        return null;
-    }
-
-    private void DebugCheckForErrors()
-    {
-        for (int i = 0; i < LevelEntrances.Length; i++)
-        {
-            var id = LevelEntrances[i].Id;
-            for (int j = i + 1; j < LevelEntrances.Length; j++)
-            {
-                if (id == LevelEntrances[j].Id)
-                {
-                    Debug.LogError("LevelManager : LevelEntrance duplicate found for Id " + id, LevelEntrances[j]);
-                }
-            }
-        }
-
-        for (int i = 0; i < LevelExits.Length; i++)
-        {
-            if (LevelExits[i].Level == Level.Invalid)
-            {
-                Debug.LogError("LevelManager : LevelExit has not been configured", LevelExits[i]);
-            }
-        }
-    }
+  }
 }

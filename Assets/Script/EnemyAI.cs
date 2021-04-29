@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
   public Rigidbody2D Rigidbody2D;
   private FacingController facingController;
 
-  private void Awake()
+  private void Start()
   {
     player = FindObjectOfType<Player>();
     facingController = GetComponent<FacingController>();
