@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     public Health Health { get; private set; }
     public Mana Mana { get; private set; }
     public Transform SlashSpawn;
-    private Animator Animator;
+    public PrefabManager.Global MasterSlash, NormalSlash;
+    public Animator Animator { get; set; }
     private Animation _currentAnimation;
     private Flash Flash;
     private GameManager instance;
@@ -94,33 +95,31 @@ public class Player : MonoBehaviour
         {
             CurrentAnimation = Animation.Attack_BT;
             Animator.Update(0);
+
             if (Animator.GetFloat("FacingX") == 1)
             {
-                if (instance.SavegameManager.saveData.hasMasterSword)
-                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashRight, SlashSpawn.position, SlashSpawn.rotation);
-                else
-                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashRight, SlashSpawn.position, SlashSpawn.rotation);
+                MasterSlash = PrefabManager.Global.MasterSlashRight;
+                NormalSlash = PrefabManager.Global.SlashRight;
             }
             else if (Animator.GetFloat("FacingX") == -1)
             {
-                if (instance.SavegameManager.saveData.hasMasterSword)
-                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashLeft, SlashSpawn.position, SlashSpawn.rotation);
-                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashLeft, SlashSpawn.position, SlashSpawn.rotation);
+                MasterSlash = PrefabManager.Global.MasterSlashLeft;
+                NormalSlash = PrefabManager.Global.SlashLeft;
             }
             else if (Animator.GetFloat("FacingY") == -1)
             {
-                if (instance.SavegameManager.saveData.hasMasterSword)
-                    //GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashDown, SlashSpawn.position, SlashSpawn.rotation);
-                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashDown, SlashSpawn.position, SlashSpawn.rotation);
+                MasterSlash = PrefabManager.Global.MasterSlashDown;
+                NormalSlash = PrefabManager.Global.SlashDown;
             }
             else if (Animator.GetFloat("FacingY") == 1)
             {
-                if (instance.SavegameManager.saveData.hasMasterSword)
-                    //GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashUp, SlashSpawn.position, SlashSpawn.rotation);
-                    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashUp, SlashSpawn.position, SlashSpawn.rotation);
+                MasterSlash = PrefabManager.Global.MasterSlashUp;
+                NormalSlash = PrefabManager.Global.SlashUp;
             }
-
-
+            if (instance.SavegameManager.saveData.hasMasterSword)
+                GameManager.Instance.PrefabManager.Instanciate(MasterSlash, SlashSpawn.position, transform.rotation);
+            else
+                GameManager.Instance.PrefabManager.Instanciate(NormalSlash, SlashSpawn.position, SlashSpawn.rotation);
         }
         // si animation terminee reset currentanimation
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)

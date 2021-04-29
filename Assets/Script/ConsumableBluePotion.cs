@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ConsumableBluePotion : MonoBehaviour, IConsumable
 {
@@ -11,7 +9,7 @@ public class ConsumableBluePotion : MonoBehaviour, IConsumable
         player = GameManager.Instance.Player;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == player.gameObject)
         {
@@ -20,4 +18,5 @@ public class ConsumableBluePotion : MonoBehaviour, IConsumable
                 player.Mana.Value += 2;
         }
     }
+
 }
