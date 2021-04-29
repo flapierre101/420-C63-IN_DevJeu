@@ -47,14 +47,16 @@ public class Player : MonoBehaviour
     {
         instance = GameManager.Instance;
         Health = GetComponent<Health>();
+        Mana = GetComponent<Mana>();
         Health.OnHit += OnHit;
         Health.OnDeath += OnDeath;
-        Health.OnHeal += OnHeal;
+        Health.OnChanged += OnChanged;
+        Mana.OnChanged += OnChangedMana;
+        FacingController = GetComponent<FacingController>();
         Animator = GetComponent<Animator>();
         Flash = GetComponent<Flash>();
         npcTimer = 0.0f;
     }
-
 
     private void OnDeath(Health health)
     {
@@ -64,13 +66,17 @@ public class Player : MonoBehaviour
     private void OnHit(Health health)
     {
         Flash.StartFlash();
+
     }
 
-    private void OnHeal(Health health)
+    private void OnChanged(Health health)
     {
-        var animation = AnimationName;
-        Animator.Play(animation);
-        instance.UIManager.gainHeart();
+        instance.UIManager.updateHeart();
+    }
+
+    private void OnChangedMana(Mana mana)
+    {
+        instance.UIManager.updateMana();
     }
 
     private void OnUse(Mana mana)
@@ -118,26 +124,6 @@ public class Player : MonoBehaviour
 
         }
 
-        // si animation terminee reset currentanimation
-        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-            CurrentAnimation = Animation.Idle;
-
-        if (CurrentAnimation != Animation.Attack_BT)
-        {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-            if (horizontal != 0.0f || vertical != 0.0f)
-            {
-                Animator.SetFloat("FacingX", horizontal);
-                Animator.SetFloat("FacingY", vertical);
-                CurrentAnimation = Animation.Walk;
-            }
-            else
-            {
-                CurrentAnimation = Animation.Idle;
-            }
-        }
-
         if (Input.GetKeyUp(KeyCode.E))
         {
             if (npc != null)
@@ -156,6 +142,29 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.J))
         {
             Health.Value += 1;
+        }
+        // Pour debug le mana UI
+        if (Input.GetKeyUp(KeyCode.N))
+        {
+            Mana.Value -= 1;
+        }
+        // Pour debug le mana UI
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            Mana.Value += 1;
+        }
+        // Debug : Ajout de l'épée
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            instance.SavegameManager.saveData.hasSword = true;
+            instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.Sword;
+            instance.UIManager.updateWeapon();
+        }
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            instance.SavegameManager.saveData.hasMasterSword = true;
+            instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.MasterSword;
+            instance.UIManager.updateWeapon();
         }
     }
 
