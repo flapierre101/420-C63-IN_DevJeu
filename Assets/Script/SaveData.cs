@@ -8,7 +8,6 @@ public class SaveData
         Boomerang,
         MasterSword,
         Sword,
-        MasterSword,
 
         None
     }
