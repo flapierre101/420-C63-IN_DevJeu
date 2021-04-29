@@ -46,7 +46,7 @@ public class Goblin : MonoBehaviour
   private bool onCoolDown = false;
   private void Awake()
   {
-    playerHealth = GameManager.Instance.Player.GetComponent<Health>();
+    playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
     FacingController = GetComponent<FacingController>();
     Animator = GetComponent<Animator>();
     Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -139,12 +139,5 @@ public class Goblin : MonoBehaviour
   public void OnSwordAttack()
   {
     CurrentAnimation = Animation.Walk;
-
-    //CurrentAnimation = Animation.Walk;
-
-    /*if (enemyAI.PlayerInAttackRange && !onCoolDown)
-    {
-      CurrentAnimation = Animation.Attack;
-    }*/
   }
 }

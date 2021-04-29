@@ -16,9 +16,9 @@ public class EnemyAI : MonoBehaviour
 
   private void Awake()
   {
-    player = GameManager.Instance.Player;
+    player = FindObjectOfType<Player>();
     facingController = GetComponent<FacingController>();
-    playerCollider = GameManager.Instance.Player.GetComponent<BoxCollider2D>();
+    playerCollider = player.GetComponent<BoxCollider2D>();
     Rigidbody2D = GetComponent<Rigidbody2D>();
     playerDetected = false;
     PlayerInAttackRange = false;
@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
 
         if (facingController.Facing == Facing.Left && playerPositionX < enemyPositionX)
         {
-          if (xDelta < RangeDetection && enemyMinY > playerMinY && enemyMaxY > playerMaxY)                       // determine if enemy can "see" player when facing LEFT
+          if (xDelta < RangeDetection && enemyMinY > playerMinY && enemyMaxY > playerMaxY)                       // determine if enemy can "see" player in front when facing LEFT
           {
             playerDetected = true;
 
@@ -53,7 +53,7 @@ public class EnemyAI : MonoBehaviour
             }
           }
         }
-        else if (facingController.Facing == Facing.Right && playerPositionX > enemyPositionX)                        // determine if enemy can "see" when facing RIGHT, avoids player detection when facing opposites
+        else if (facingController.Facing == Facing.Right && playerPositionX > enemyPositionX)                        // determine if enemy can "see" player in front when facing RIGHT, avoids player detection when facing opposites
         {
           if (xDelta < RangeDetection && enemyMinY > playerMinY && enemyMaxY > playerMaxY)
           {
@@ -95,26 +95,15 @@ public class EnemyAI : MonoBehaviour
       {
         var playerPositionY = playerCollider.bounds.max.y;
         var enemyPositionY = gameObject.GetComponent<BoxCollider2D>().bounds.min.y;
-        //var enemyMinX = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
-        //var enemyMaxX = gameObject.GetComponent<BoxCollider2D>().bounds.max.x;
-        //var playerCenterX = playerCollider.bounds.center.x;
         var enemyCenterX = gameObject.GetComponent<BoxCollider2D>().bounds.center.x;
         var playerMinX = playerCollider.bounds.min.x;
         var playerMaxX = playerCollider.bounds.max.x;
 
-
         float yDelta = Mathf.Abs(enemyPositionY - playerPositionY);
-
-        Debug.Log("PLAYER Y: " + playerPositionY);
-        Debug.Log("ENEMY Y: " + enemyPositionY);
-        Debug.Log("DELTA Y: " + yDelta);
-
-
-
 
         if (facingController.Facing == Facing.Down && playerPositionY < enemyPositionY)
         {
-          if (yDelta < RangeDetection && playerMinX < enemyCenterX && playerMaxX > enemyCenterX)                     // determine if enemy can "see" player when facing DOWN
+          if (yDelta < RangeDetection && playerMinX < enemyCenterX && playerMaxX > enemyCenterX)                     // determine if enemy can "see" player in front when facing DOWN
           {
             playerDetected = true;
 
@@ -126,7 +115,7 @@ public class EnemyAI : MonoBehaviour
         }
         else if (facingController.Facing == Facing.Up && playerPositionY > enemyPositionY)
         {
-          if (yDelta < RangeDetection && playerMinX < enemyCenterX && playerMaxX > enemyCenterX)                     // determine if enemy can "see" player when facing UP
+          if (yDelta < RangeDetection && playerMinX < enemyCenterX && playerMaxX > enemyCenterX)                     // determine if enemy can "see" player in front when facing UP
           {
             playerDetected = true;
 
