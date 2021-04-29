@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 942102874276047005}
   - component: {fileID: 2217846576543645153}
   - component: {fileID: 671321048425517903}
-  - component: {fileID: 7460512254311068214}
+  - component: {fileID: 862843852}
   m_Layer: 13
   m_Name: Goblin
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_LocalPosition: {x: 0.018, y: -0.028, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 942102875417218397}
+  - {fileID: 3648556269271967303}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb54518a10fdbfc45b0e520961e36315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialFacing: -1
-  Animator: {fileID: 0}
+  InitialFacing: 1
+  Animator: {fileID: 942102874276047011}
 --- !u!95 &942102874276047011
 Animator:
   serializedVersion: 3
@@ -181,10 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11c6947abffe0b47a4e521513d0dd5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerInRange: 0
-  FacingController: {fileID: 0}
-  Animator: {fileID: 0}
---- !u!114 &7460512254311068214
+  PlayerInAttackRange: 0
+  FacingController: {fileID: 942102874276047009}
+  Rigidbody2D: {fileID: 2217846576543645153}
+  Animator: {fileID: 942102874276047011}
+--- !u!114 &862843852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +197,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587a1b790d85e264d8e7664e7f62adfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &942102875417218396
+  playerDetected: 0
+  PlayerInAttackRange: 0
+  PatrolX: 0
+  PatrolMin: -1.4
+  PatrolMax: 1.6
+  RangeDetection: 2.5
+  AttackRange: 0.1
+  Rigidbody2D: {fileID: 0}
+--- !u!1 &5325482077273224652
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,52 +213,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 942102875417218397}
-  - component: {fileID: 942102875417218402}
+  - component: {fileID: 3648556269271967303}
+  - component: {fileID: 914940768737950929}
   m_Layer: 14
-  m_Name: EnemyHitbox
+  m_Name: EnemyHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &942102875417218397
+--- !u!4 &3648556269271967303
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942102875417218396}
+  m_GameObject: {fileID: 5325482077273224652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0378, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 942102874276047014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &942102875417218402
+--- !u!61 &914940768737950929
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942102875417218396}
+  m_GameObject: {fileID: 5325482077273224652}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0012771748, y: 0.0012771785}
+  m_Offset: {x: 0.000238128, y: 0.03993219}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.38}
+    oldSize: {x: 0.24, y: 0.37}
     newSize: {x: 0.4033333, y: 0.4725}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19132233, y: 0.37032613}
+  m_Size: {x: 0.21989642, y: 0.3716513}
   m_EdgeRadius: 0

@@ -2,17 +2,18 @@
 
 public class PrefabManager : MonoBehaviour
 {
-    public enum Global
-    {
-        Consumable_BluePotion,
-        Consumable_Heart,
-        Consumable_RedPotion,
-        Destructable_Barrel,
-        Destructable_Bush,
-        Destructable_MetalCrate,
-        Destructable_WoodCrate,
-        OldMan,
-        Player,
+  public enum Global
+  {
+    Consumable_BluePotion,
+    Consumable_Heart,
+    Consumable_RedPotion,
+    Destructable_Barrel,
+    Destructable_Bush,
+    Destructable_MetalCrate,
+    Destructable_WoodCrate,
+    Goblin,
+    OldMan,
+    Player,
 
     Count
   }
