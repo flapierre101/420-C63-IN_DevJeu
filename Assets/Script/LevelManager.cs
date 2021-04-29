@@ -11,7 +11,8 @@ public class LevelManager : MonoBehaviour
         // Define value by hand
         MainMenu = 0,
         WorldMap = 100,
-        Dungeon = 200
+        Town = 200,
+        Forest = 300,
 
 
 

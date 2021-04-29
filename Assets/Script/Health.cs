@@ -42,13 +42,6 @@ public class Health : MonoBehaviour
                 OnHit?.Invoke(this);
             }
 
-            if (_value > previous)
-            {
-                InvincibilityTimer = InvincibilityTime;
-                OnHeal?.Invoke(this);
-            }
-
-
             if (_value <= 0)
                 OnDeath?.Invoke(this);
 

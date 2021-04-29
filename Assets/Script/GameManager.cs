@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        OnSceneLoaded();
+        //OnSceneLoaded();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         //Camera.cullingMask &= ~(1 << LayerMask.NameToLayer("EnemyHitbox"));
 
         // Dynamically create Player in the scene
-        /* // TODO AJOUTER UN PLAYER AVANT D'ENLEVER COMMENTAIRES - DV
+
         if (!Player)
         {
             Player = FindObjectOfType<Player>();
@@ -82,8 +82,8 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(Player);
             }
         }
-        */
-        //LevelManager.OnLevelStart();
+
+        LevelManager.OnLevelStart();
     }
 
     private void Update()
@@ -105,5 +105,10 @@ public class GameManager : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    public void bootstrap()
+    {
+        OnSceneLoaded();
     }
 }

@@ -5,6 +5,7 @@ public class SoundManager : MonoBehaviour
     public enum Music
     {
         Music,
+        Titlescreen,
 
         Count
     }
@@ -13,6 +14,7 @@ public class SoundManager : MonoBehaviour
     {
         heyListen,
         itemCatch,
+        martha,
 
         Count
     };

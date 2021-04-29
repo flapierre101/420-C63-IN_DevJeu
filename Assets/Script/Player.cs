@@ -20,107 +20,113 @@ public class Player : MonoBehaviour
     private float npcTimer;
 
 
-  public Animation CurrentAnimation
-  {
-    get { return _currentAnimation; }
-    set
+    public Animation CurrentAnimation
     {
-      _currentAnimation = value;
-      UpdateAnimations();
+        get { return _currentAnimation; }
+        set
+        {
+            _currentAnimation = value;
+            UpdateAnimations();
+        }
     }
-  }
-  public string AnimationName
-  {
-    get
+    public string AnimationName
     {
-      var suffix = CurrentAnimation.ToString();
-      return suffix;
+        get
+        {
+            var suffix = CurrentAnimation.ToString();
+            return suffix;
+        }
     }
-  }
-  private void UpdateAnimations()
-  {
-    var animation = AnimationName;
-    Animator.Play(animation);
-  }
-
-  void Awake()
-  {
-    instance = GameManager.Instance;
-    Health = GetComponent<Health>();
-    Health.OnHit += OnHit;
-    Health.OnDeath += OnDeath;
-    Health.OnHeal += OnHeal;
-    FacingController = GetComponent<FacingController>();
-    Animator = GetComponent<Animator>();
-    Flash = GetComponent<Flash>();
-    npcTimer = 0.0f;
-  }
-
-
-  private void OnDeath(Health health)
-  {
-    gameObject.SetActive(false);
-  }
-
-  private void OnHit(Health health)
-  {
-    Flash.StartFlash();
-  }
-
-  private void OnHeal(Health health)
+    private void UpdateAnimations()
     {
         var animation = AnimationName;
         Animator.Play(animation);
-        instance.UIManager.gainHeart();
     }
 
-  private void OnUse(Mana mana)
-  {
-      mana.Value--;
-  }
+    void Awake()
+    {
+        instance = GameManager.Instance;
+        Health = GetComponent<Health>();
+        Mana = GetComponent<Mana>();
+        Health.OnHit += OnHit;
+        Health.OnDeath += OnDeath;
+        Health.OnChanged += OnChanged;
+        Mana.OnChanged += OnChangedMana;
+        FacingController = GetComponent<FacingController>();
+        Animator = GetComponent<Animator>();
+        Flash = GetComponent<Flash>();
+        npcTimer = 0.0f;
+    }
 
-  void Update()
-  {
-    if (npcTimer > 0.0f)
+
+    private void OnDeath(Health health)
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnHit(Health health)
+    {
+        Flash.StartFlash();
+
+    }
+
+    private void OnChanged(Health health)
+    {
+        instance.UIManager.updateHeart();
+    }
+
+    private void OnChangedMana(Mana mana)
+    {
+        instance.UIManager.updateMana();
+    }
+
+    private void OnUse(Mana mana)
+    {
+        mana.Value--;
+    }
+
+    void Update()
+    {
+        if (npcTimer > 0.0f)
         {
             npcTimer = npcTimer - Time.deltaTime;
         }
 
-    if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
-    {
-      CurrentAnimation = Animation.Attack_BT;
+        if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword)
+        {
+            CurrentAnimation = Animation.Attack_BT;
 
-    }
-    // si animation terminee reset currentanimation
-    if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-      CurrentAnimation = Animation.Idle;
+        }
+        // si animation terminee reset currentanimation
+        if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            CurrentAnimation = Animation.Idle;
 
-    if (CurrentAnimation != Animation.Attack_BT)
-    {
-      float horizontal = Input.GetAxisRaw("Horizontal");
-      float vertical = Input.GetAxisRaw("Vertical");
-      if (horizontal != 0.0f || vertical != 0.0f)
-      {
-        Animator.SetFloat("FacingX", horizontal);
-        Animator.SetFloat("FacingY", vertical);
-        CurrentAnimation = Animation.Walk;
-      }
-      else
-      {
-        CurrentAnimation = Animation.Idle;
-      }
-    }
+        if (CurrentAnimation != Animation.Attack_BT)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            if (horizontal != 0.0f || vertical != 0.0f)
+            {
+                Animator.SetFloat("FacingX", horizontal);
+                Animator.SetFloat("FacingY", vertical);
+                CurrentAnimation = Animation.Walk;
+            }
+            else
+            {
+                CurrentAnimation = Animation.Idle;
+            }
+        }
 
-    if (Input.GetKeyUp(KeyCode.E))
-    {
-      if (npc != null)
-      {
-        npc.UpdateBehaviour();
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (npc != null)
+            {
+                npc.UpdateBehaviour();
 
-      }
+            }
 
-    }
-    // Pour debug le heart UI
+        }
+        // Pour debug le heart UI
         if (Input.GetKeyUp(KeyCode.H))
         {
             Health.Value -= 1;
@@ -130,9 +136,32 @@ public class Player : MonoBehaviour
         {
             Health.Value += 1;
         }
-  }
+        // Pour debug le mana UI
+        if (Input.GetKeyUp(KeyCode.N))
+        {
+            Mana.Value -= 1;
+        }
+        // Pour debug le mana UI
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            Mana.Value += 1;
+        }
+        // Debug : Ajout de l'épée
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            instance.SavegameManager.saveData.hasSword = true;
+            instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.Sword;
+            instance.UIManager.updateWeapon();
+        }
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            instance.SavegameManager.saveData.hasMasterSword = true;
+            instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.MasterSword;
+            instance.UIManager.updateWeapon();
+        }
+    }
 
-  private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
 
         INPCBehaviour Inpc = other.GetComponentInParent<INPCBehaviour>();
