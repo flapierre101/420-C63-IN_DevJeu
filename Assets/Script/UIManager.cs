@@ -14,7 +14,10 @@ public class UIManager : MonoBehaviour
     public RawImage woodenSword;
     public RawImage masterSword;
     public RawImage currentWeapon;
+    public RawImage currentMagic;
     public RawImage currentMana;
+    public RawImage fireball;
+    public RawImage frostbolt;
 
 
 
@@ -52,6 +55,24 @@ public class UIManager : MonoBehaviour
         }
 
         currentWeapon.enabled = true;
+    }
+
+    public void updateMagic()
+    {
+        if (currentMagic)
+            currentMagic.enabled = false;
+
+        Debug.Log(instance.SavegameManager.saveData.equipedWeapon);
+        if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Fireball)
+        {
+            currentMagic = fireball;
+        }
+        if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Frostbolt)
+        {
+            currentMagic = frostbolt;
+        }
+
+        currentMagic.enabled = true;
     }
 
     public void updateHeart()
