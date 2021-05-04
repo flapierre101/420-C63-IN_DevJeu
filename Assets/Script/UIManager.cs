@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public RawImage currentMana;
     public RawImage fireball;
     public RawImage frostbolt;
+    public RawImage gameover;
 
 
 

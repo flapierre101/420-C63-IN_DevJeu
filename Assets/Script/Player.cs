@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     private void OnDeath(Health health)
     {
         gameObject.SetActive(false);
+        instance.UIManager.gameover.enabled = true;
     }
 
     private void OnHit(Health health)
