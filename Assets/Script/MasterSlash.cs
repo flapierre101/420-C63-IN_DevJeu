@@ -3,14 +3,31 @@
 public class MasterSlash : MonoBehaviour
 {
     private float Speed = 2;
-    private float DestroyTimer = 0.5f;
+    private Player Player;
+
+    private void Awake()
+    {
+        Player = GameManager.Instance.Player;
+    }
     void Update()
     {
-        transform.position += transform.right * Speed * Time.deltaTime;
+        if (Player.Animator.GetFloat("FacingX") == 1)
+        {
+            transform.position += transform.right * Speed * Time.deltaTime;
+        }
+        else if (Player.Animator.GetFloat("FacingX") == -1)
+        {
+            transform.position -= transform.right * Speed * Time.deltaTime;
+        }
+        else if (Player.Animator.GetFloat("FacingY") == 1)
+        {
+            transform.position += transform.up * Speed * Time.deltaTime;
+        }
+        else if (Player.Animator.GetFloat("FacingY") == -1)
+        {
+            transform.position -= transform.up * Speed * Time.deltaTime;
+        }
 
-        DestroyTimer -= Time.deltaTime;
-        if (DestroyTimer <= 0)
-            Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
