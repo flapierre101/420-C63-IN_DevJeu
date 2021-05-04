@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
         Animator.Play(animation);
     }
 
+
     void Awake()
     {
         instance = GameManager.Instance;
