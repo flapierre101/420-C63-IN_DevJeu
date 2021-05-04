@@ -123,6 +123,11 @@ public class Player : MonoBehaviour
             else
                 GameManager.Instance.PrefabManager.Instanciate(NormalSlash, SlashSpawn.position, SlashSpawn.rotation);
         }
+
+        if (Input.GetMouseButtonDown(1) && instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Fireball)
+        {
+            GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Fireball, SlashSpawn.position, transform.rotation);
+        }
         // si animation terminee reset currentanimation
         if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
             CurrentAnimation = Animation.Idle;
