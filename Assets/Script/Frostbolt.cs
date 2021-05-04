@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Frostbolt : MonoBehaviour
 {
     public enum Animation
     {
-        Fireball,
-        Fireball_Impact,
+        Frostbolt,
+        Frostbolt_Impact,
     }
     private float Speed = 2;
     private Player Player;
@@ -39,7 +39,7 @@ public class Fireball : MonoBehaviour
     {
         Player = GameManager.Instance.Player;
         Animator = GetComponent<Animator>();
-        CurrentAnimation = Animation.Fireball;
+        CurrentAnimation = Animation.Frostbolt;
 
         if (Player.Animator.GetFloat("FacingX") == 1)
             gameObject.transform.eulerAngles = gameObject.transform.eulerAngles.WithZ(0);
@@ -55,11 +55,11 @@ public class Fireball : MonoBehaviour
     {
 
 
-        if (CurrentAnimation == Animation.Fireball_Impact && Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (CurrentAnimation == Animation.Frostbolt_Impact && Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
             Destroy(gameObject);
         }
-        if (CurrentAnimation == Animation.Fireball)
+        if (CurrentAnimation == Animation.Frostbolt)
         {
             transform.position += transform.right * Speed * Time.deltaTime;
         }
@@ -74,7 +74,7 @@ public class Fireball : MonoBehaviour
         {
             health.Value -= 2;
         }
-        CurrentAnimation = Animation.Fireball_Impact;
+        CurrentAnimation = Animation.Frostbolt_Impact;
         Animator.Update(0);
 
 
