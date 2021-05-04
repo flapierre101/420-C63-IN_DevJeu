@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +19,7 @@ public class Player : MonoBehaviour
     private INPCBehaviour npc;
     private float npcTimer;
 
+    // Début des fonctions
 
     public Animation CurrentAnimation
     {
@@ -62,18 +61,20 @@ public class Player : MonoBehaviour
 
     private void OnDeath(Health health)
     {
-        GameManager.Instance.SoundManager.Play(SoundManager.Music.Gameover);
-        StartCoroutine(LoadLevelAfterDelay(3));
+        gameObject.SetActive(false);        
+				StartCoroutine(LoadLevelAfterDelay(4));
     }
 
     IEnumerator LoadLevelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+				instance.UIManager.gameover.enabled = true;
         GameManager.Instance.SavegameManager.onDeath();
         GameManager.Instance.destroyInstance();
         GameManager.Instance.SoundManager.Stop(SoundManager.Music.Gameover);
         SceneManager.LoadScene("MainMenu");
     }
+    
 
     private void OnHit(Health health)
     {
@@ -120,6 +121,7 @@ public class Player : MonoBehaviour
                     GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.MasterSlashLeft, SlashSpawn.position, SlashSpawn.rotation);
                 GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.SlashLeft, SlashSpawn.position, SlashSpawn.rotation);
             }
+
             else if (Animator.GetFloat("FacingY") == -1)
             {
                 if (instance.SavegameManager.saveData.hasMasterSword)
@@ -196,6 +198,19 @@ public class Player : MonoBehaviour
             instance.SavegameManager.saveData.hasMasterSword = true;
             instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.MasterSword;
             instance.UIManager.updateWeapon();
+        }
+        // Debug : Ajout de l'épée
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            instance.SavegameManager.saveData.hasFireball = true;
+            instance.SavegameManager.saveData.equipedMagic = SaveData.EquipedMagic.Fireball;
+            instance.UIManager.updateMagic();
+        }
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            instance.SavegameManager.saveData.hasFrostbolt = true;
+            instance.SavegameManager.saveData.equipedMagic = SaveData.EquipedMagic.Frostbolt;
+            instance.UIManager.updateMagic();
         }
     }
 
