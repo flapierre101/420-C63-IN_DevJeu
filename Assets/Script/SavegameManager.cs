@@ -9,14 +9,11 @@ public class SavegameManager : MonoBehaviour
         saveData = new SaveData();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void onDeath()
     {
-
+        saveData = new SaveData();
     }
 
-    void Interact()
-    {
 
-    }
+
 }
