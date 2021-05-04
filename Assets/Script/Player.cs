@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -61,20 +63,20 @@ public class Player : MonoBehaviour
 
     private void OnDeath(Health health)
     {
-        gameObject.SetActive(false);        
-				StartCoroutine(LoadLevelAfterDelay(4));
+        gameObject.SetActive(false);
+        StartCoroutine(LoadLevelAfterDelay(4));
     }
 
     IEnumerator LoadLevelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-				instance.UIManager.gameover.enabled = true;
+        //instance.UIManager.gameover.enabled = true;
         GameManager.Instance.SavegameManager.onDeath();
         GameManager.Instance.destroyInstance();
         GameManager.Instance.SoundManager.Stop(SoundManager.Music.Gameover);
         SceneManager.LoadScene("MainMenu");
     }
-    
+
 
     private void OnHit(Health health)
     {
