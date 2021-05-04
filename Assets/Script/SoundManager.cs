@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     {
         heyListen,
         itemCatch,
+        laugh,
         martha,
 
         Count

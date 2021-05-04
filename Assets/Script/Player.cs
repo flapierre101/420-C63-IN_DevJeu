@@ -63,17 +63,21 @@ public class Player : MonoBehaviour
 
     private void OnDeath(Health health)
     {
-        gameObject.SetActive(false);
-        StartCoroutine(LoadLevelAfterDelay(4));
+        GameManager.Instance.SoundManager.Play(SoundManager.Music.Gameover);
+        GameManager.Instance.SoundManager.Play(SoundManager.Sfx.laugh);
+        instance.UIManager.gameover.enabled = true;
+        StartCoroutine(LoadLevelAfterDelay(3));
     }
 
     IEnumerator LoadLevelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        //instance.UIManager.gameover.enabled = true;
         GameManager.Instance.SavegameManager.onDeath();
-        GameManager.Instance.destroyInstance();
         GameManager.Instance.SoundManager.Stop(SoundManager.Music.Gameover);
+        instance.UIManager.gameover.enabled = false;
+        instance.UIManager.password.enabled = true;
+        yield return new WaitForSeconds(delay);
+        GameManager.Instance.destroyInstance();
         SceneManager.LoadScene("MainMenu");
     }
 

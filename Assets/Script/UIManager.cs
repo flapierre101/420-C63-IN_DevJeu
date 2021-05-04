@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public RawImage fireball;
     public RawImage frostbolt;
     public RawImage gameover;
+    public RawImage password;
 
 
 
