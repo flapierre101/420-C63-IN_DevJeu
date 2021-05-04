@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         npcTimer = 0.0f;
     }
 
+
     private void OnDeath(Health health)
     {
         gameObject.SetActive(false);
@@ -106,6 +107,7 @@ public class Player : MonoBehaviour
                 MasterSlash = PrefabManager.Global.MasterSlashLeft;
                 NormalSlash = PrefabManager.Global.SlashLeft;
             }
+
             else if (Animator.GetFloat("FacingY") == -1)
             {
                 MasterSlash = PrefabManager.Global.MasterSlashDown;
@@ -213,5 +215,28 @@ public class Player : MonoBehaviour
         {
             npc = null;
         }
+    }
+
+    public void OnLevelStart(LevelEntrance levelEntrance)
+    {
+        if (levelEntrance != null)
+        {
+            transform.position = levelEntrance.transform.position;
+        }
+        else
+        {
+            transform.position = Vector3.zero;
+        }
+
+        //PlatformController.Reset();
+    }
+    public void OnLevelRestart()
+    {
+        GameManager.Instance.Camera.GetComponent<FollowObject>().TargetTransform = gameObject.transform;
+    }
+
+    private void Start()
+    {
+        OnLevelRestart();
     }
 }

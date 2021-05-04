@@ -1261,8 +1261,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dabbdc4029569841b4895ed938a540a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   TargetTransform: {fileID: 109281293}
 --- !u!114 &333815592
 MonoBehaviour:
@@ -1274,8 +1274,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794d7d6ff8bba2742b4ff59473e92144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &341725347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1402,7 +1402,8 @@ GameObject:
   - component: {fileID: 357588087}
   - component: {fileID: 357588089}
   - component: {fileID: 357588088}
-  m_Layer: 10
+  - component: {fileID: 357588090}
+  m_Layer: 14
   m_Name: LevelExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,10 +1434,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b758373be9208174ca60a09b93411d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: 0
-  LevelEntranceId: 
+  m_Name:
+  m_EditorClassIdentifier:
+  Level: 300
+  LevelEntranceId: 1
 --- !u!212 &357588089
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1487,6 +1488,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &357588090
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357588086}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
 --- !u!1001 &378296261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3001,8 +3028,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -3020,8 +3047,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -3693,12 +3720,12 @@ PrefabInstance:
     - target: {fileID: 1083148959772621788, guid: 1bea238ffaa49184282ebd708c083558,
         type: 3}
       propertyPath: Animator
-      value: 
+      value:
       objectReference: {fileID: 1233841453}
     - target: {fileID: 1083148959772621788, guid: 1bea238ffaa49184282ebd708c083558,
         type: 3}
       propertyPath: FacingController
-      value: 
+      value:
       objectReference: {fileID: 1233841456}
     - target: {fileID: 1083148959772621788, guid: 1bea238ffaa49184282ebd708c083558,
         type: 3}
@@ -4338,7 +4365,7 @@ GameObject:
   - component: {fileID: 1174325772}
   - component: {fileID: 1174325774}
   - component: {fileID: 1174325773}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: LevelEntrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4419,8 +4446,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84113ddb8befe9e4e99ea3f9cfd43d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   Id: Default
 --- !u!1 &1204470622
 GameObject:
@@ -4832,8 +4859,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb54518a10fdbfc45b0e520961e36315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1265447851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6110,8 +6137,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19eb7561c1dea504e94df27edfca05d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &1657061895
 GameObject:
   m_ObjectHideFlags: 0
