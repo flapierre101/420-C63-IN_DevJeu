@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private INPCBehaviour npc;
     private float npcTimer;
 
+    // Début des fonctions
 
     public Animation CurrentAnimation
     {
@@ -189,6 +190,19 @@ public class Player : MonoBehaviour
             instance.SavegameManager.saveData.hasMasterSword = true;
             instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.MasterSword;
             instance.UIManager.updateWeapon();
+        }
+        // Debug : Ajout de l'épée
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            instance.SavegameManager.saveData.hasFireball = true;
+            instance.SavegameManager.saveData.equipedMagic = SaveData.EquipedMagic.Fireball;
+            instance.UIManager.updateMagic();
+        }
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            instance.SavegameManager.saveData.hasFrostbolt = true;
+            instance.SavegameManager.saveData.equipedMagic = SaveData.EquipedMagic.Frostbolt;
+            instance.UIManager.updateMagic();
         }
     }
 
