@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 570737233}
   - component: {fileID: 570737234}
   m_Layer: 16
-  m_Name: NPCHitBox
+  m_Name: InterractableHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,6 @@ GameObject:
   - component: {fileID: 2926856185995631979}
   - component: {fileID: 2926856185995631980}
   - component: {fileID: 2926856185995631981}
-  - component: {fileID: 2926856185995631976}
   m_Layer: 15
   m_Name: OldMan
   m_TagString: Untagged
@@ -203,24 +202,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annoyed:
-    name: OldMan
+    name: Screaming Oldman
     sentences:
     - What are you still doing here?
     - Fly you fool!
---- !u!114 &2926856185995631976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2926856185995631982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eece3e029a71f848a84391affb88a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: OldMan
+  intro:
+    name: Old Man
     sentences:
     - Uhg.... wait... what are you doing here?
     - Oh! You are here to save Link are you?

@@ -18,14 +18,18 @@ public class UIManager : MonoBehaviour
     public RawImage currentMana;
     public RawImage fireball;
     public RawImage frostbolt;
+    public RawImage bomb;
+    public RawImage gameover;
+    public RawImage password;
+    public Text interactPrompt;
 
 
 
 
     private GameManager instance;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void init()
     {
         instance = GameManager.Instance;
         woodenSword.enabled = false;
@@ -33,23 +37,18 @@ public class UIManager : MonoBehaviour
         currentMana = mana100;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void updateWeapon()
     {
+
         if (currentWeapon)
             currentWeapon.enabled = false;
 
-        Debug.Log(instance.SavegameManager.saveData.equipedWeapon);
         if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.Sword)
         {
             currentWeapon = woodenSword;
         }
-        if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.MasterSword)
+        else if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.MasterSword)
         {
             currentWeapon = masterSword;
         }
@@ -67,9 +66,13 @@ public class UIManager : MonoBehaviour
         {
             currentMagic = fireball;
         }
-        if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Frostbolt)
+        else if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Frostbolt)
         {
             currentMagic = frostbolt;
+        }
+        else if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Bomb)
+        {
+            currentMagic = bomb;
         }
 
         currentMagic.enabled = true;
@@ -132,6 +135,13 @@ public class UIManager : MonoBehaviour
         }
         Debug.Log("patate" + instance.Player.Mana.Value);
         currentMana.enabled = true;
+
+    }
+
+    internal void OnLevelStart()
+    {
+        if (GameManager.Instance.SavegameManager.saveData.hasSword)
+            instance.UIManager.updateWeapon();
 
     }
 }

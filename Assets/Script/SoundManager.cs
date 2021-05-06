@@ -4,8 +4,11 @@ public class SoundManager : MonoBehaviour
 {
     public enum Music
     {
-        Music,
+        Battle,
+        BossTheme,
+        Gameover,
         Titlescreen,
+        TownTheme,
 
         Count
     }
@@ -14,6 +17,7 @@ public class SoundManager : MonoBehaviour
     {
         heyListen,
         itemCatch,
+        laugh,
         martha,
 
         Count

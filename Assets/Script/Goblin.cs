@@ -78,19 +78,19 @@ public class Goblin : MonoBehaviour
     {
       if (FacingController.Facing == Facing.Left)
       {
-        x -= speed;
+        x -= speed * Time.deltaTime;
       }
       else if (FacingController.Facing == Facing.Right)
       {
-        x += speed;
+        x += speed * Time.deltaTime;
       }
       else if (FacingController.Facing == Facing.Up)
       {
-        y += speed;
+        y += speed * Time.deltaTime;
       }
       else if (FacingController.Facing == Facing.Down)
       {
-        y -= speed;
+        y -= speed * Time.deltaTime;
       }
 
       if (enemyAI.PlayerInAttackRange && !onCoolDown)
