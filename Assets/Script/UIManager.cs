@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public RawImage currentMana;
     public RawImage fireball;
     public RawImage frostbolt;
+    public RawImage bomb;
     public RawImage gameover;
     public RawImage password;
     public Text interactPrompt;
@@ -47,7 +48,7 @@ public class UIManager : MonoBehaviour
         {
             currentWeapon = woodenSword;
         }
-        if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.MasterSword)
+        else if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.MasterSword)
         {
             currentWeapon = masterSword;
         }
@@ -65,9 +66,13 @@ public class UIManager : MonoBehaviour
         {
             currentMagic = fireball;
         }
-        if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Frostbolt)
+        else if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Frostbolt)
         {
             currentMagic = frostbolt;
+        }
+        else if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Bomb)
+        {
+            currentMagic = bomb;
         }
 
         currentMagic.enabled = true;
