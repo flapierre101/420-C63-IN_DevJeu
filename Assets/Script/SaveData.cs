@@ -14,6 +14,7 @@ public class SaveData
 
     public enum EquipedMagic
     {
+        Bomb,
         Fireball,
         Frostbolt,
 
@@ -27,6 +28,7 @@ public class SaveData
     public bool hasBoomerang = false;
     public bool hasFireball = false;
     public bool hasFrostbolt = false;
+    public bool hasBomb = false;
     public EquipedWeapon equipedWeapon = EquipedWeapon.None;
     public EquipedMagic equipedMagic = EquipedMagic.None;
     public int spokeoldman = 0;

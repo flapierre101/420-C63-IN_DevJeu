@@ -4,6 +4,8 @@ public class PrefabManager : MonoBehaviour
 {
     public enum Global
     {
+        Bomb,
+        BombExplosion,
         Consumable_BluePotion,
         Consumable_Heart,
         Consumable_RedPotion,
@@ -80,5 +82,23 @@ public class PrefabManager : MonoBehaviour
         return Instantiate(GlobalPrefabs[(int)prefab], position, Quaternion.identity);
     }
 
+    public void ItemDrop(GameObject gameObject)
+    {
+        var itemSpawn = Random.Range(1, 101);
 
+        switch (itemSpawn)
+        {
+            case int n when n >= 1 && n <= 25:
+                Instanciate(Global.Consumable_BluePotion, gameObject.transform.position, gameObject.transform.rotation);
+                break;
+            case int n when n >= 26 && n <= 50:
+                Instanciate(Global.Consumable_Heart, gameObject.transform.position, gameObject.transform.rotation);
+                break;
+            case int n when n >= 51 && n <= 75:
+                Instanciate(Global.Consumable_RedPotion, gameObject.transform.position, gameObject.transform.rotation);
+                break;
+            default:
+                break;
+        }
+    }
 }

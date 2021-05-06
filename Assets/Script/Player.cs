@@ -144,6 +144,11 @@ public class Player : MonoBehaviour
                 GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Frostbolt, SlashSpawn.position, transform.rotation);
                 Mana.Value -= 1;
             }
+            else if (instance.SavegameManager.saveData.equipedMagic == SaveData.EquipedMagic.Bomb)
+            {
+                GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.Bomb, SlashSpawn.position, transform.rotation);
+                Mana.Value -= 1;
+            }
 
         }
         // si animation terminee reset currentanimation
@@ -220,6 +225,12 @@ public class Player : MonoBehaviour
         {
             instance.SavegameManager.saveData.hasFrostbolt = true;
             instance.SavegameManager.saveData.equipedMagic = SaveData.EquipedMagic.Frostbolt;
+            instance.UIManager.updateMagic();
+        }
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            instance.SavegameManager.saveData.hasBomb = true;
+            instance.SavegameManager.saveData.equipedMagic = SaveData.EquipedMagic.Bomb;
             instance.UIManager.updateMagic();
         }
     }
