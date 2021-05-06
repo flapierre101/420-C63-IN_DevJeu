@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         }
 
         LevelManager.OnLevelStart();
+        UIManager.OnLevelStart();
     }
 
     private void Update()
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
     public void bootstrap()
     {
         OnSceneLoaded();
+        UIManager.init();
     }
 
     public void destroyInstance()

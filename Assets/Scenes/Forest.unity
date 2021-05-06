@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 942102874276047014, guid: 4b91e91c5de210c40a742f6281eaab73,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 942102874276047014, guid: 4b91e91c5de210c40a742f6281eaab73,
         type: 3}
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 1174325772}
   - {fileID: 357588087}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161841913
 GameObject:
@@ -280,7 +280,7 @@ Transform:
   - {fileID: 507789936}
   - {fileID: 1964812858}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333815587
 GameObject:
@@ -1750,6 +1750,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1408175173}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1410139926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2605657589031255431, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_Name
+      value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.196
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255437, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: panelText.sentences.Array.data[0]
+      value: "Trust me! No big bad evil guy this way \u2190"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255437, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: panelText.name
+      value: Weirder panel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50cd9f1ca3db76449b30ea6ad167656f, type: 3}
 --- !u!1001 &1439395590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1958,6 +2037,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1658727662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1738752543
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2605657589031255431, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_Name
+      value: Panel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2208016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2408516
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255433, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255437, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: panelText.sentences.Array.data[0]
+      value: "Nothing this way  \u2190   "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605657589031255437, guid: 50cd9f1ca3db76449b30ea6ad167656f,
+        type: 3}
+      propertyPath: panelText.name
+      value: Weird Panel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50cd9f1ca3db76449b30ea6ad167656f, type: 3}
 --- !u!1001 &1964812857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2141,7 +2299,7 @@ PrefabInstance:
     - target: {fileID: 942102874276047014, guid: 4b91e91c5de210c40a742f6281eaab73,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 942102874276047014, guid: 4b91e91c5de210c40a742f6281eaab73,
         type: 3}

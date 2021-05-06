@@ -11,5 +11,7 @@ public class Bootstrap : MonoBehaviour
         instance = GameManager.Instance;
         instance.bootstrap();
         instance.SoundManager.Play(music);
+
+
     }
 }

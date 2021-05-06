@@ -5,6 +5,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 
     private GameManager instance;
     public Dialogue annoyed;
+    public Dialogue intro;
 
 
 
@@ -15,25 +16,21 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
 
     }
 
-    //Pour l'interface IInterractable 
+
+
+
+
     public void Interact()
-    {
-        throw new System.NotImplementedException();
-    }
-
-
-
-    public void UpdateBehaviour()
     {
 
         if (instance.SavegameManager.saveData.spokeoldman == 0)
         {
-            FindObjectOfType<DialogueTrigger>().TriggerDialogue();
+            FindObjectOfType<DialogueManager>().StartDialogue(intro);
             instance.SavegameManager.saveData.spokeoldman++;
         }
         else if (instance.SavegameManager.saveData.spokeoldman == 3)
         {
-            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
             instance.SavegameManager.saveData.spokeoldman++;
             instance.SavegameManager.saveData.hasSword = true;
             instance.SavegameManager.saveData.equipedWeapon = SaveData.EquipedWeapon.Sword;
@@ -42,7 +39,7 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
         }
         else if (instance.SavegameManager.saveData.spokeoldman <= 4)
         {
-            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
             instance.SavegameManager.saveData.spokeoldman++;
         }
         else if (instance.SavegameManager.saveData.spokeoldman == 5)
@@ -52,15 +49,18 @@ public class Oldman : MonoBehaviour, INPCBehaviour, IInterractable
         }
         else if (instance.SavegameManager.saveData.spokeoldman == 6)
         {
-            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
             instance.SavegameManager.saveData.spokeoldman++;
         }
         else if (instance.SavegameManager.saveData.spokeoldman == 7)
         {
-            FindObjectOfType<DialogueTrigger>().DisplayNextSentence();
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
             instance.SavegameManager.saveData.spokeoldman = 5;
         }
     }
 
-
+    public void UpdateBehaviour()
+    {
+        throw new System.NotImplementedException();
+    }
 }

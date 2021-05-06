@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private Animation _currentAnimation;
     private Flash Flash;
     private GameManager instance;
-    private INPCBehaviour npc;
+    private IInterractable npc;
     private float npcTimer, attackTime;
 
     // Début des fonctions
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
         {
             if (npc != null)
             {
-                npc.UpdateBehaviour();
+                npc.Interact();
 
             }
 
@@ -245,7 +245,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        INPCBehaviour Inpc = other.GetComponentInParent<INPCBehaviour>();
+        IInterractable Inpc = other.GetComponentInParent<IInterractable>();
         if (Inpc != null)
         {
             if (npcTimer <= 0.0f)
@@ -255,6 +255,7 @@ public class Player : MonoBehaviour
 
             }
             npc = Inpc;
+            instance.UIManager.interactPrompt.enabled = true;
 
         }
 
@@ -265,10 +266,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Oldman oldman = other.GetComponentInParent<Oldman>();
-        if (oldman != null)
+        IInterractable Inpc = other.GetComponentInParent<IInterractable>();
+        if (Inpc != null)
         {
             npc = null;
+            instance.UIManager.interactPrompt.enabled = false;
         }
     }
 

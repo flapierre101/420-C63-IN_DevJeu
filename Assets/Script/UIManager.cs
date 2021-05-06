@@ -20,14 +20,15 @@ public class UIManager : MonoBehaviour
     public RawImage frostbolt;
     public RawImage gameover;
     public RawImage password;
+    public Text interactPrompt;
 
 
 
 
     private GameManager instance;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void init()
     {
         instance = GameManager.Instance;
         woodenSword.enabled = false;
@@ -35,18 +36,13 @@ public class UIManager : MonoBehaviour
         currentMana = mana100;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void updateWeapon()
     {
+
         if (currentWeapon)
             currentWeapon.enabled = false;
 
-        Debug.Log(instance.SavegameManager.saveData.equipedWeapon);
         if (instance.SavegameManager.saveData.equipedWeapon == SaveData.EquipedWeapon.Sword)
         {
             currentWeapon = woodenSword;
@@ -134,6 +130,13 @@ public class UIManager : MonoBehaviour
         }
         Debug.Log("patate" + instance.Player.Mana.Value);
         currentMana.enabled = true;
+
+    }
+
+    internal void OnLevelStart()
+    {
+        if (GameManager.Instance.SavegameManager.saveData.hasSword)
+            instance.UIManager.updateWeapon();
 
     }
 }
