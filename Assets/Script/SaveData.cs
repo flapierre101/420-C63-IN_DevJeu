@@ -12,12 +12,22 @@ public class SaveData
         None
     }
 
+    public enum EquipedMagic
+    {
+        Fireball,
+        Frostbolt,
+
+        None
+    }
+
 
     public string characterName = "PasZelda";
     public bool hasSword = false;
     public bool hasMasterSword = false;
     public bool hasBoomerang = false;
-    public bool hasSomeUpgrade = true;
+    public bool hasFireball = false;
+    public bool hasFrostbolt = false;
     public EquipedWeapon equipedWeapon = EquipedWeapon.None;
+    public EquipedMagic equipedMagic = EquipedMagic.None;
     public int spokeoldman = 0;
 }
