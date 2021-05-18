@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     {
         Battle,
         BossTheme,
+        Fanfare,
         Gameover,
         Titlescreen,
         TownTheme,

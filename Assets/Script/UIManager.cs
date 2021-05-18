@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public RawImage frostbolt;
     public RawImage bomb;
     public RawImage gameover;
+    public RawImage victory;
     public RawImage password;
     public Text interactPrompt;
 
