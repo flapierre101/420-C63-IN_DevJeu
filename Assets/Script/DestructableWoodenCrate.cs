@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestructableWoodenCrate : MonoBehaviour, IDestructable
 {
@@ -19,6 +17,7 @@ public class DestructableWoodenCrate : MonoBehaviour, IDestructable
     {
         Animator.enabled = true;
         Animator.Play("Destroy_WoodenCrate");
+        GameManager.Instance.PrefabManager.ItemDrop(gameObject);
 
     }
 

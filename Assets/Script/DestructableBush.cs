@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestructableBush : MonoBehaviour, IDestructable
 {
@@ -16,5 +13,6 @@ public class DestructableBush : MonoBehaviour, IDestructable
     private void OnDeath(Health health)
     {
         Destroy(gameObject);
+        GameManager.Instance.PrefabManager.ItemDrop(gameObject);
     }
 }

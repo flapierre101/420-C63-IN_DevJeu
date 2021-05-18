@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var objet = collision.gameObject.GetComponent<IDestructable>();
-        var stop = 1;
-        if (objet != null)
+        var parent = collision.gameObject.GetComponentInParent<IDestructable>();
+
+        if (parent != null)
         {
-            objet.Health.Value -= 1;
+            Debug.Log("colision avec: " + parent);
+            parent.Health.Value -= 1;
         }
-     
-        
-        
+
+
+
     }
 }

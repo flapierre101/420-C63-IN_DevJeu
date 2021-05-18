@@ -66,17 +66,16 @@ public class Fireball : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        var health = collision.gameObject.GetComponentInParent<Health>();
+        var parent = collision.gameObject.GetComponentInParent<IDestructable>();
 
-        if (health)
+        Debug.Log("colision avec: " + parent);
+        if (parent != null)
         {
-            health.Value -= 2;
+            parent.Health.Value -= 2;
         }
         CurrentAnimation = Animation.Fireball_Impact;
         Animator.Update(0);
-
-
     }
 }
