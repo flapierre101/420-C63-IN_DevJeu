@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794d7d6ff8bba2742b4ff59473e92144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: 0
+  music: 1
 --- !u!114 &805392843
 MonoBehaviour:
   m_ObjectHideFlags: 0

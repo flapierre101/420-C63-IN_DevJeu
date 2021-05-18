@@ -117,6 +117,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && instance.SavegameManager.saveData.hasSword && attackTime <= 0.0f)
         {
+            GameManager.Instance.SoundManager.AttackSound();
             CurrentAnimation = Animation.Attack_BT;
             Animator.Update(0);
 

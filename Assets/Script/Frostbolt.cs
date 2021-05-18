@@ -37,6 +37,7 @@ public class Frostbolt : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.Instance.SoundManager.Play(SoundManager.Sfx.POW);
         Player = GameManager.Instance.Player;
         Animator = GetComponent<Animator>();
         CurrentAnimation = Animation.Frostbolt;

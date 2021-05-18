@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     {
         Battle,
         BossTheme,
+        Fanfare,
         Gameover,
         Titlescreen,
         TownTheme,
@@ -15,10 +16,16 @@ public class SoundManager : MonoBehaviour
 
     public enum Sfx
     {
+        attack1,
+        attack2,
+        attack3,
+        attack4,
+        BOOM,
         heyListen,
         itemCatch,
         laugh,
         martha,
+        POW,
 
         Count
     };
@@ -66,5 +73,26 @@ public class SoundManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(SfxAudioClips[(int)sfx], transform.position);
     }
 
+    public void AttackSound()
+    {
+        var sound = Random.Range(1, 5);
 
+        switch (sound)
+        {
+            case 1:
+                Play(Sfx.attack1);
+                break;
+            case 2:
+                Play(Sfx.attack2);
+                break;
+            case 3:
+                Play(Sfx.attack3);
+                break;
+            case 4:
+                Play(Sfx.attack4);
+                break;
+            default:
+                break;
+        }
+    }
 }

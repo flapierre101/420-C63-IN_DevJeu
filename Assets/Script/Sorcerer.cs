@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sorcerer : MonoBehaviour, IDestructable
 {
@@ -81,6 +83,17 @@ public class Sorcerer : MonoBehaviour, IDestructable
         SpecialAttack();
       }
     }
+    else if (hasTeleported && TeleportTimer <= 0)
+    {
+      TeleportTimer = 5;
+      hasTeleported = false;
+      Teleport();
+      SpecialAttack();
+
+
+    }
+
+
 
   }
 
@@ -88,7 +101,24 @@ public class Sorcerer : MonoBehaviour, IDestructable
   {
     //Destroy(gameObject);
     CurrentAnimation = Animation.Sorcerer_Death_Down;
+    TeleportTimer = 10000;
     GameManager.Instance.PrefabManager.ItemDrop(gameObject);
+    GameManager.Instance.UIManager.victory.enabled = true;
+    GameManager.Instance.SoundManager.Play(SoundManager.Music.Fanfare);
+    StartCoroutine(LoadLevelAfterDelay(10));
+
+  }
+
+  IEnumerator LoadLevelAfterDelay(float delay)
+  {
+
+
+    yield return new WaitForSeconds(delay);
+    GameManager.Instance.SavegameManager.onDeath();
+    GameManager.Instance.SoundManager.Stop(SoundManager.Music.Fanfare); ;
+    GameManager.Instance.destroyInstance();
+    SceneManager.LoadScene("MainMenu");
+    Destroy(gameObject);
   }
 
   private void OnHit(Health health)
