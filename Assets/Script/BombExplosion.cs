@@ -5,11 +5,11 @@ public class BombExplosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var health = collision.gameObject.GetComponentInParent<Health>();
+        var health = collision.gameObject.GetComponentInParent<IDestructable>();
 
-        if (health)
+        if (health != null)
         {
-            health.Value -= 2;
+            health.Health.Value -= 2;
         }
     }
 }
