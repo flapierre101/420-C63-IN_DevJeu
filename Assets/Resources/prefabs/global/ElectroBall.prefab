@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6540139301708673442}
   - component: {fileID: 6540139301708673443}
   - component: {fileID: 6540139301708673440}
+  - component: {fileID: 4050367868408384687}
   m_Layer: 14
   m_Name: ElectroBall
   m_TagString: Untagged
@@ -145,3 +146,19 @@ MonoBehaviour:
   FadeWaitTime: 0.75
   FadeOutTime: 1
   DestroyOnFadeOut: 1
+--- !u!114 &4050367868408384687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540139301708673441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5d56942bba264cbc267e1f4266c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileCollider: {fileID: 0}
+  Animator: {fileID: 6540139301708673443}
+  Damage: 1
+  Speed: 1

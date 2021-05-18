@@ -45,8 +45,9 @@ public class Sorcerer : MonoBehaviour
   public BoxCollider2D playerPosition;
   public BoxCollider2D AreaOfEffect;
   public float Speed = 1;
-  public float AttackTimer = 1.9f;
-  private bool hasAttacked = true;
+  public float TeleportTimer = 5;
+  private bool hasTeleported = true;
+  private Vector3[] teleportPositions = new Vector3[] { new Vector3(0, 0, 0), new Vector3(1.5f, 0.52f, 0f), new Vector3(1.14f, -0.23f, 0f), new Vector3(-1.8f, 0.5f, 0f), new Vector3(-0.4f, -0.39f, 0f), new Vector3(1.72f, -0.38f, 0f) };
   private float xRange = 1.5f;
 
   private void Start()
@@ -63,60 +64,29 @@ public class Sorcerer : MonoBehaviour
 
   void Update()
   {
-    if (hasAttacked && AttackTimer > 0)
+    if (hasTeleported && TeleportTimer > 0)
     {
-      AttackTimer -= Time.deltaTime;
+      TeleportTimer -= Time.deltaTime;
     }
-    else if (hasAttacked && AttackTimer <= 0)
+    else if (hasTeleported && TeleportTimer <= 0)
     {
-      AttackTimer = 2;
-      hasAttacked = false;
+      TeleportTimer = 5;
+      hasTeleported = false;
       Teleport();
+      SpecialAttack();
     }
 
 
 
-  }
-
-  public void ElectroBallAttack()
-  {
-    hasAttacked = true;
-    GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.ElectroBall, transform.position, transform.rotation);
   }
 
   public void Teleport()
   {
-    var halfX = SorcererCollider.bounds.extents.x;
-    //var halfY = SorcererCollider.bounds.extents.y;
-    var x = Random.Range((AreaOfEffect.bounds.min.x), (AreaOfEffect.bounds.max.x));
-    //var y = Random.Range((AreaOfEffect.bounds.min.y), (AreaOfEffect.bounds.max.y));
 
-    Vector3 teleportToXY = transform.position;
-    teleportToXY.x = x;
-    //teleportToXY.y = y;
-
-    transform.position = teleportToXY;
-    ElectroBallAttack();
-    SpecialAttack();
+    transform.position = teleportPositions[Random.Range(0, teleportPositions.Length)];
+    Debug.Log("I TELEPORTED: " + transform.position);
+    hasTeleported = true;
   }
-
-  public void LookAtPlayer()
-  {
-    Vector3 playerTransform = GameManager.Instance.Player.GetComponent<Transform>().position;
-
-    float xDelta = Mathf.Abs(transform.position.x - playerTransform.x);
-    //float yDelta = Mathf.Abs(transform.position.y - playerTransform.y);
-
-    if (xDelta <= xRange)
-    {
-      GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.ElectroBall, SpawnPoint.position, transform.rotation);
-    }
-    else
-    {
-      SpecialAttack();
-    }
-  }
-
   public void SpecialAttack()
   {
     var z = 0;
@@ -128,8 +98,6 @@ public class Sorcerer : MonoBehaviour
       z += 90;
       rotation = transform.rotation * Quaternion.Euler(0, 0, z);
     }
-
-    hasAttacked = true;
 
   }
 }
