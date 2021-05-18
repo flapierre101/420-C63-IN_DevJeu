@@ -105,9 +105,6 @@ public class Sorcerer : MonoBehaviour, IDestructable
         GameManager.Instance.SoundManager.Stop(SoundManager.Music.Fanfare); ;
         GameManager.Instance.destroyInstance();
         SceneManager.LoadScene("MainMenu");
-        GameManager.Instance.UIManager.victory.enabled = false;
-        GameManager.Instance.destroyInstance();
-        SceneManager.LoadScene("MainMenu");
         Destroy(gameObject);
     }
 
