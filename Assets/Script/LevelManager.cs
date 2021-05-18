@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     WorldMap = 100,
     Town = 200,
     Forest = 300,
+    Dungeon = 400,
 
 
 

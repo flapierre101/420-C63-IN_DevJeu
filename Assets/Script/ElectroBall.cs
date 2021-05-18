@@ -44,6 +44,11 @@ public class ElectroBall : MonoBehaviour
     CurrentAnimation = Animation.Cast;
 
   }
+
+  private void Update()
+  {
+
+  }
   private void OnTriggerEnter2D(Collider2D collision)
   {
     projectileCollider.enabled = false;
