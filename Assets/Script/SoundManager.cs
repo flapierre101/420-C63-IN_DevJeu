@@ -15,10 +15,12 @@ public class SoundManager : MonoBehaviour
 
     public enum Sfx
     {
+        BOOM,
         heyListen,
         itemCatch,
         laugh,
         martha,
+        POW,
 
         Count
     };
