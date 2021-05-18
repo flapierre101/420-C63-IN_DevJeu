@@ -3,8 +3,8 @@
 public class Bootstrap : MonoBehaviour
 
 {
-    private GameManager instance;
-    public SoundManager.Music music;
+  private GameManager instance;
+  public SoundManager.Music music;
 
     private void Awake()
     {
