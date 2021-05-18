@@ -883,6 +883,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1058545447}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1099817555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4994079917108320359, guid: 8e2110132f3fed94bb4c586d0fcaca96,
+    type: 3}
+  m_PrefabInstance: {fileID: 2092740949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1099817564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099817555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589a5d19d83f15b47b2a3d90db807247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashOnTime: 0.1
+  FlashOffTime: 0.1
+  Duration: 1
 --- !u!1001 &1129818374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1785,7 +1806,7 @@ PrefabInstance:
     - target: {fileID: 2092740951, guid: 8e2110132f3fed94bb4c586d0fcaca96, type: 3}
       propertyPath: SpawnPoint
       value: 
-      objectReference: {fileID: 2123472582}
+      objectReference: {fileID: 0}
     - target: {fileID: 4994079917108320353, guid: 8e2110132f3fed94bb4c586d0fcaca96,
         type: 3}
       propertyPath: m_GravityScale
@@ -1873,12 +1894,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e2110132f3fed94bb4c586d0fcaca96, type: 3}
---- !u!4 &2123472582 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4994079917244221621, guid: 8e2110132f3fed94bb4c586d0fcaca96,
-    type: 3}
-  m_PrefabInstance: {fileID: 2092740949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2864227899948677456
 PrefabInstance:
   m_ObjectHideFlags: 0

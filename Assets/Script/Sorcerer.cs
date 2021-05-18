@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Sorcerer : MonoBehaviour
+public class Sorcerer : MonoBehaviour, IDestructable
 {
 
   public enum Animation
@@ -39,12 +39,13 @@ public class Sorcerer : MonoBehaviour
   }
   public BoxCollider2D SorcererCollider;
   public Animator Animator;
-  public Health SorcererHealth;
+  public Health Health { get; private set; }
   public FacingController FacingController;
   public Transform SpawnPoint;
   public BoxCollider2D playerPosition;
   public BoxCollider2D AreaOfEffect;
   public float Speed = 1;
+  Flash Flash { get; set; }
   public float TeleportTimer = 5;
   private bool hasTeleported = true;
   private Vector3[] teleportPositions = new Vector3[] { new Vector3(0, 0, 0), new Vector3(1.5f, 0.52f, 0f), new Vector3(1.14f, -0.23f, 0f), new Vector3(-1.8f, 0.5f, 0f), new Vector3(-0.4f, -0.39f, 0f), new Vector3(1.72f, -0.38f, 0f) };
@@ -54,7 +55,10 @@ public class Sorcerer : MonoBehaviour
   {
     SorcererCollider = gameObject.GetComponent<BoxCollider2D>();
     Animator = gameObject.GetComponent<Animator>();
-    SorcererHealth = gameObject.GetComponent<Health>();
+    Health = gameObject.GetComponent<Health>();
+    Flash = GetComponent<Flash>();
+    Health.OnHit += OnHit;
+    Health.OnDeath += OnDeath;
     FacingController = gameObject.GetComponent<FacingController>();
     playerPosition = FindObjectOfType<Player>().GetComponent<BoxCollider2D>();
     AreaOfEffect = GetComponent<BoxCollider2D>();
@@ -80,11 +84,22 @@ public class Sorcerer : MonoBehaviour
 
   }
 
+  private void OnDeath(Health health)
+  {
+    Destroy(gameObject);
+    GameManager.Instance.PrefabManager.ItemDrop(gameObject);
+  }
+
+  private void OnHit(Health health)
+  {
+
+    Flash.StartFlash();
+  }
+
   public void Teleport()
   {
 
     transform.position = teleportPositions[Random.Range(0, teleportPositions.Length)];
-    Debug.Log("I TELEPORTED: " + transform.position);
     hasTeleported = true;
   }
   public void SpecialAttack()
@@ -95,7 +110,7 @@ public class Sorcerer : MonoBehaviour
     for (int i = 0; i < 8; ++i)
     {
       GameManager.Instance.PrefabManager.Instanciate(PrefabManager.Global.ElectroBall, transform.position, rotation);
-      z += 90;
+      z += 45;
       rotation = transform.rotation * Quaternion.Euler(0, 0, z);
     }
 

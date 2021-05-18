@@ -64,10 +64,5 @@ public class ElectroBall : MonoBehaviour
       playerHealth.Value -= Damage;
     }
 
-
-
-
-
-
   }
 }
