@@ -34,13 +34,16 @@ public class ElectroBall : MonoBehaviour
     Animator.Play(animation);
   }
   public BoxCollider2D projectileCollider;
+  Fade fade;
   public Animator Animator;
   public int Damage = 1;
   public float Speed = 1;
+  private bool hasHit = false;
 
   private void Awake()
   {
     projectileCollider = GetComponent<BoxCollider2D>();
+    fade = GetComponent<Fade>();
     Animator = GetComponent<Animator>();
     CurrentAnimation = Animation.Cast;
 
@@ -48,21 +51,28 @@ public class ElectroBall : MonoBehaviour
 
   private void Update()
   {
-    transform.position += Speed * Time.deltaTime * transform.right;
+    if (CurrentAnimation == Animation.Cast)
+    {
+      transform.position += Speed * Time.deltaTime * transform.right;
+    }
+
   }
   private void OnTriggerEnter2D(Collider2D collision)
   {
     Health playerHealth = collision.GetComponent<Health>();
 
-    if (collision.CompareTag("Player"))
+    if (collision.CompareTag("Player") && !hasHit)
     {
       projectileCollider.enabled = false;
       CurrentAnimation = Animation.Impact;
-      Fade fade = gameObject.GetComponent<Fade>();
-      fade.FadeWaitTime = 0.75f;
-      fade.StartFade();
       playerHealth.Value -= Damage;
+      hasHit = true;
     }
 
+  }
+
+  public void OnImpactComplete()
+  {
+    Destroy(gameObject);
   }
 }

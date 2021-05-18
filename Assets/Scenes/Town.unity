@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 300
-  LevelEntranceId: 1
+  LevelEntranceId: Default
 --- !u!212 &357588089
 SpriteRenderer:
   m_ObjectHideFlags: 0

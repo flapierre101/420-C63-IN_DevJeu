@@ -49,7 +49,6 @@ public class Sorcerer : MonoBehaviour, IDestructable
   public float TeleportTimer = 5;
   private bool hasTeleported = true;
   private Vector3[] teleportPositions = new Vector3[] { new Vector3(0, 0, 0), new Vector3(1.5f, 0.52f, 0f), new Vector3(1.14f, -0.23f, 0f), new Vector3(-1.8f, 0.5f, 0f), new Vector3(-0.4f, -0.39f, 0f), new Vector3(1.72f, -0.38f, 0f) };
-  private float xRange = 1.5f;
 
   private void Start()
   {
@@ -68,25 +67,27 @@ public class Sorcerer : MonoBehaviour, IDestructable
 
   void Update()
   {
-    if (hasTeleported && TeleportTimer > 0)
+    if (Health.Value > 0)
     {
-      TeleportTimer -= Time.deltaTime;
+      if (hasTeleported && TeleportTimer > 0)
+      {
+        TeleportTimer -= Time.deltaTime;
+      }
+      else if (hasTeleported && TeleportTimer <= 0)
+      {
+        TeleportTimer = 5;
+        hasTeleported = false;
+        Teleport();
+        SpecialAttack();
+      }
     }
-    else if (hasTeleported && TeleportTimer <= 0)
-    {
-      TeleportTimer = 5;
-      hasTeleported = false;
-      Teleport();
-      SpecialAttack();
-    }
-
-
 
   }
 
   private void OnDeath(Health health)
   {
-    Destroy(gameObject);
+    //Destroy(gameObject);
+    CurrentAnimation = Animation.Sorcerer_Death_Down;
     GameManager.Instance.PrefabManager.ItemDrop(gameObject);
   }
 
@@ -98,12 +99,12 @@ public class Sorcerer : MonoBehaviour, IDestructable
 
   public void Teleport()
   {
-
     transform.position = teleportPositions[Random.Range(0, teleportPositions.Length)];
     hasTeleported = true;
   }
   public void SpecialAttack()
   {
+    CurrentAnimation = Animation.Cast;
     var z = 0;
     var rotation = transform.rotation * Quaternion.Euler(0, 0, z);
 

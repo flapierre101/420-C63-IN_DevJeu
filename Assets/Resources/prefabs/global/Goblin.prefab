@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb54518a10fdbfc45b0e520961e36315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialFacing: 1
+  InitialFacing: -1
   Animator: {fileID: 942102874276047011}
 --- !u!95 &942102874276047011
 Animator:
